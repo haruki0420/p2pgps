@@ -111,7 +111,7 @@ packet = 01 03 2A 00 48 86 44 15 52 C5 4E 53 03 00 05 00 00 52 17 69
 1. 長さがちょうど 20 bytes。
 2. `version == 0x01`。
 3. `flags & 0x80 == 0`。
-4. `-90_000_000 <= latitude <= 90_000_000` かつ `-180_000_000 <= longitude <= 180_000_000`。
+4. `-900_000_000 <= latitude <= 900_000_000` かつ `-1_800_000_000 <= longitude <= 1_800_000_000`（度 × 10^7。±90° / ±180°）。
 5. `VALID_FIX == 1` のとき、上記に加えて `(0,0)` 近傍（±0.0001°）を「無効」として扱う（Null Island 対策）。
 6. 連続受信の `sequence` が巻き戻った場合はログに記録するが、パケット自体は受理する（再送・並び替え耐性）。
 7. `timestamp` が現在時刻から ±24 時間を超える場合は「stale」として表示に警告を出す（注入はユーザー設定に従う）。
@@ -140,12 +140,26 @@ packet = 01 03 2A 00 48 86 44 15 52 C5 4E 53 03 00 05 00 00 52 17 69
 
 | opcode | 名称 | payload | 意味 |
 | ---: | :--- | :--- | :--- |
-| `0x01` | `START` | uint16 LE `interval_ms`（0 = 既定値 1000） | ストリーミング開始。`100 <= interval_ms <= 60000`。範囲外は既定値にクランプ |
+| `0x01` | `START` | uint16 LE `interval_ms`（0 = 既定値 1000） | ストリーミング開始。`100 <= interval_ms <= 60000`。範囲外は境界値にクランプ（§5.1） |
 | `0x02` | `STOP` | なし | ストリーミング停止（アドバタイズは継続） |
-| `0x03` | `SET_INTERVAL` | uint16 LE `interval_ms` | 送信間隔の変更（ストリーミング中でも可） |
+| `0x03` | `SET_INTERVAL` | uint16 LE `interval_ms` | 送信間隔の変更（ストリーミング中でも可）。正規化は §5.1 |
 | `0x04` | `REQUEST_FIX` | なし | 次回 notify を即時送信（1 回） |
 | `0x05` | `SET_EXTENDED` | uint8 `enabled` (0/1) | Extended Location の notify 有効化 |
 | `0x7F` | `RESET` | なし | 既定設定に戻す（interval=1000, extended=off, sequence=0） |
+
+### 5.1 `interval_ms` の正規化（v1.0.1 で明確化）
+
+`START` / `SET_INTERVAL` の `interval_ms` は、受信側が**生値**を書き、送信側が以下の規則で正規化して適用する。Status の `interval_ms` は正規化後の値を返す。
+
+| 生値 | 適用値 |
+| ---: | ---: |
+| `0` | `1000`（既定値） |
+| `1`–`99` | `100`（下限にクランプ） |
+| `100`–`60000` | そのまま |
+| `60001`–`65535` | `60000`（上限にクランプ） |
+
+- テストベクタでは「生の Control バイト列」と「正規化後の値」を別フィールドで表現する（`hex` は生値、`normalized_interval_ms` は適用値）。
+- この規則は v1.0.1 で「範囲外は既定値にクランプ」という曖昧な記述を置き換えたもの。Python / Android / iOS の 3 実装で統一する。
 
 - 未知の opcode は無視し、Status の `last_error = 1 (UNKNOWN_OPCODE)` を設定する。
 - 不正長は無視し、`last_error = 2 (BAD_LENGTH)`。
@@ -159,7 +173,7 @@ packet = 01 03 2A 00 48 86 44 15 52 C5 4E 53 03 00 05 00 00 52 17 69
 | ---: | ---: | :--- | :--- | :--- |
 | 0 | 1 | `version` | uint8 | `0x01` |
 | 1 | 1 | `state` | uint8 | 0=Idle, 1=Streaming, 2=Paused, 3=Error |
-| 2 | 2 | `interval_ms` | uint16 LE | 現在の送信間隔 |
+| 2 | 2 | `interval_ms` | uint16 LE | 現在の送信間隔（正規化後、§5.1） |
 | 4 | 1 | `battery_pct` | uint8 | 255 = 不明 |
 | 5 | 1 | `status_flags` | uint8 | bit0 = extended enabled, bit1 = fix available, bit2 = charging, bit3 = low battery |
 | 6 | 1 | `last_error` | uint8 | 0=none, 1=unknown opcode, 2=bad length, 3=location unavailable, 4=internal |

@@ -50,7 +50,7 @@ iPhone / Android で取得した GPS 位置を BLE で iPad に送り、iPad 上
 
 ## 5. エージェント運用ルール
 
-- ルートは `[local path]
+- ルートはプロジェクトルート（`p2pgps/`）。各エージェントは担当ディレクトリ（`p2pgps-ios/`, `p2pgps-android/`, `p2pgps-protocol/`）のみ書き込む。
 - 共有契約は `docs/protocol-spec.md`。勝手に変更しない。変更が必要なら lead に報告。
 - 各担当は自分のリポジトリで `git init` + 初回コミットまで行う。**GitHub への push は lead が行う**（レビュー前公開を避けるため）。
 - 参照実装: `_research/t-location`（StikDebug の GPS 固定機能の最小フォーク、AGPL-3.0）、`_research/xtool`（xtool 本体・ドキュメント・サンプル）、`_ref/[private-project]` / `_ref/[private-project]`（ユーザーの既存プロジェクトの構成・CI 慣例）。

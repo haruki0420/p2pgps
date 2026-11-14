@@ -56,4 +56,4 @@
 
 ## テストベクタ
 
-`p2pgps-protocol/tests/vectors/*.json` にあり、iOS / Android のテストも同じ値を使用します。
+`p2pgps-protocol/tests/vectors/*.json` にあります。iOS / Android のテストは同じカテゴリ・値のベクタを手動でミラーしています（自動同期は将来の CI 課題）。

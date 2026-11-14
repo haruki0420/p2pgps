@@ -73,6 +73,8 @@ python -m pytest
 - [プロトコル仕様 v1](docs/protocol-spec.md)
 - [アーキテクチャ](docs/architecture.md)
 - [プロジェクト計画 / 進行状況](docs/plan.md)
+- [レビューと修正の記録](docs/review-summary.md)
+- [検証とリリース](docs/verification.md)
 - [ライセンスと帰属](docs/licensing.md)
 - 各リポジトリの Wiki（Getting Started / Protocol / Architecture / Troubleshooting / FAQ）
 

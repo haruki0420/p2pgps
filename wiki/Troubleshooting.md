@@ -1,0 +1,39 @@
+# Troubleshooting
+
+## 接続できない
+
+| 症状 | 確認すること |
+| :--- | :--- |
+| iPad の一覧に送信側が出ない | 送信側で「送信開始」が ON か。iPad の Bluetooth が ON か。距離（10 m 以内）。Android は位置情報権限が「常に許可」か |
+| 接続はできるが位置が来ない | 送信側で START を送っているか（Receiver が自動で START を書きます）。Status の state が Streaming か |
+| すぐ切断される | 送信側アプリがバックグラウンドで停止していないか。Android は前景サービス通知が出ているか。iPhone は「常に許可」か |
+
+## 位置が反映されない（iPad）
+
+| 症状 | 対処 |
+| :--- | :--- |
+| トンネルが繋がらない | LocalDevVPN が接続済みか。Wi-Fi に接続しているか。ターゲット IP が `10.7.0.1` か |
+| `Developer Disk Image is not mounted` | Settings → DDI を再ダウンロード。Developer Mode が ON か |
+| `pairing file` エラー | pairing file を再インポート。期限切れの場合は再取得 |
+| 注入 ON にしても変わらない | 他に位置シミュレーションを行うアプリ（TLocation / StikDebug）が同時に動いていないか。終了して再試行 |
+| ポートが使用中（errno 48） | 他の JIT / デバッグ / VPN アプリを終了。LocalDevVPN を再接続。iPad を再起動 |
+
+## ビルド
+
+| 症状 | 対処 |
+| :--- | :--- |
+| `libidevice_ffi.a` が無い | `./scripts/fetch-vendor.sh` を実行（Windows は `scripts/fetch-vendor.ps1`） |
+| SHA-256 不一致 | ダウンロードが壊れている。再実行。上流のファイルが変わった場合は Issue へ |
+| `swift build` で iOS SDK が見つからない | `xtool sdk list` で darwin があるか。`xtool setup` を再実行 |
+| リンクエラー `_location_simulation_*` | Vendor の取得と `-L Vendor/idevice -lidevice_ffi` の設定を確認 |
+
+## ログの確認
+
+- iOS: アプリの Diagnostics 画面、または `Console.app` / `idevicesyslog`
+- Android: `adb logcat -s GpsSenderService`
+
+## 既知の制約
+
+- 実機での動作検証は未実施です（開発環境に実機が無いため）。
+- iOS の位置シミュレーションは Apple の非公開サービスに依存するため、OS アップデートで壊れる可能性があります。
+- BLE は 1 対 1 接続のみ（v1）。

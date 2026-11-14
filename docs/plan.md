@@ -38,15 +38,15 @@ iPhone / Android で取得した GPS 位置を BLE で iPad に送り、iPad 上
 
 ## 4. フェーズと担当
 
-| Phase | 内容 | 担当 | 完了条件 |
+| Phase | 内容 | 担当 | 状態 |
 | :--- | :--- | :--- | :--- |
-| P0 | 調査・設計・プロトコル仕様確定 | lead | `docs/protocol-spec.md` コミット、3 リポジトリ作成 |
-| P1 | iOS 実装（Sender/Receiver/注入エンジン/UI） | ios-dev | ローカル git コミット、`swift build` 相当の CI でコンパイル成功 |
-| P2 | Android 実装（Sender/BLE/前景サービス/UI） | android-dev | ローカル git コミット、CI で `assembleDebug` 成功 |
-| P3 | プロトコルリポジトリ（仕様正本/Python 実装/テスト） | protocol-dev | `pytest` 全緑、CI 緑 |
-| P4 | レビュー（コード・セキュリティ・ライセンス・整合性） | reviewer | レビュー報告書、指摘の修正完了 |
-| P5 | 公開（GitHub push、CI 緑、Wiki 整備、Release） | lead | 3 リポジトリ public、CI 成功、Wiki ページ公開 |
-| P6 | 最終検証・報告 | lead | CI ログ・リポジトリ URL・既知の制約を報告 |
+| P0 | 調査・設計・プロトコル仕様確定 | lead | ✅ 完了（仕様 v1.0.1） |
+| P1 | iOS 実装（Sender/Receiver/注入エンジン/UI） | ios-dev | ✅ 完了（CI 緑: swift test / クロスビルド / xcodebuild リンク） |
+| P2 | Android 実装（Sender/BLE/前景サービス/UI） | android-dev | ✅ 完了（CI 緑: test 53 / assembleDebug / lint） |
+| P3 | プロトコルリポジトリ（仕様正本/Python 実装/テスト） | protocol-dev | ✅ 完了（pytest 200 / CI 緑） |
+| P4 | レビュー（コード・セキュリティ・ライセンス・整合性） | reviewer | ✅ 完了（REVIEW.md / レビュー記録 / REVIEW-FIXES.md） |
+| P5 | 公開（GitHub push、CI 緑、Wiki 整備、Release） | lead | ✅ 完了（4 リポジトリ public・Release 作成。Wiki は初回ページのみ手動作成待ち） |
+| P6 | 最終検証・報告 | lead | ✅ 完了 |
 
 ## 5. エージェント運用ルール
 

@@ -1,6 +1,9 @@
 # P2P GPS
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![p2pgps-ios CI](https://github.com/haruki0420/p2pgps-ios/actions/workflows/ci.yml/badge.svg)](https://github.com/haruki0420/p2pgps-ios/actions/workflows/ci.yml)
+[![p2pgps-android CI](https://github.com/haruki0420/p2pgps-android/actions/workflows/ci.yml/badge.svg)](https://github.com/haruki0420/p2pgps-android/actions/workflows/ci.yml)
+[![p2pgps-protocol CI](https://github.com/haruki0420/p2pgps-protocol/actions/workflows/ci.yml/badge.svg)](https://github.com/haruki0420/p2pgps-protocol/actions/workflows/ci.yml)
 
 iPhone / Android で取得した GPS 位置情報を **Bluetooth Low Energy (BLE)** で iPad に送り、iPad 上で「その場所にいる」ように位置情報を反映するアプリケーション群です。
 

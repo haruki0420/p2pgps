@@ -1,5 +1,7 @@
 # P2P GPS
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 iPhone / Android で取得した GPS 位置情報を **Bluetooth Low Energy (BLE)** で iPad に送り、iPad 上で「その場所にいる」ように位置情報を反映するアプリケーション群です。
 
 Mac を持っていなくてもビルドできるよう、iOS アプリは [xtool](https://github.com/xtool-org/xtool)（SwiftPM ベースの Xcode 代替）を前提としています。iPad 側の位置固定は [StikDebug](https://github.com/StikDebug/StikDebug) 由来の GPS シミュレーション機能（最小フォーク [TLocation](https://github.com/truongkma/t-location)）を流用しています。
@@ -70,6 +72,15 @@ python -m pytest
 - [プロジェクト計画 / 進行状況](docs/plan.md)
 - [ライセンスと帰属](docs/licensing.md)
 - 各リポジトリの Wiki（Getting Started / Protocol / Architecture / Troubleshooting / FAQ）
+
+## Wiki
+
+このリポジトリの `wiki/` はプロジェクト全体の Wiki（Getting Started / Architecture / Protocol / Design / Setup iPad / Build with xtool / Troubleshooting / FAQ / Roadmap / License）です。GitHub の仕様で Wiki の初回ページだけは手動作成が必要です。
+
+1. https://github.com/haruki0420/p2pgps/wiki を開き「Create the first page」→ そのまま Save。
+2. `./scripts/publish-wiki.sh` を実行すると `wiki/*.md` が Wiki に同期されます。
+
+各サブリポジトリ（`p2pgps-ios` / `p2pgps-android` / `p2pgps-protocol`）にも Wiki 用 Markdown と同期スクリプトがあります。
 
 ## 既知の制約
 

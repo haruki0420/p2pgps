@@ -19,6 +19,7 @@ P2P GPS は複数の上流プロジェクトの上に成り立っています。
 | [StikDebug](https://github.com/StikDebug/StikDebug)（© Stephen Bove / StikDebug contributors） | AGPL-3.0 | オンデバイス位置シミュレーションの原実装。`p2pgps-ios` の `P2PGPSInjection` はこの派生 |
 | [TLocation](https://github.com/truongkma/t-location) | AGPL-3.0 | StikDebug から GPS 固定機能だけを残した最小フォーク。移植元として参照（コミット `5e57f815e5958f133dfbaae8252473054adeccf0`） |
 | [idevice](https://github.com/jkcoxson/idevice)（© jkcoxson） | MIT | Apple デバイスサービスとの通信ライブラリ。`libidevice_ffi.a` として静的リンク |
+| [libplist](https://github.com/libimobiledevice/libplist)（© Nikias Bassen / Jonathan Beck） | LGPL-2.1-or-later | `idevice.h` に含まれる plist 実装部分。`p2pgps-ios` の `Vendor/idevice/LICENSE.libplist` に全文を同梱 |
 | [xtool](https://github.com/xtool-org/xtool) | MIT | Mac なしで iOS アプリをビルドするツールチェーン |
 | [doronz88/DeveloperDiskImage](https://github.com/doronz88/DeveloperDiskImage) | 上流の表記に従う | DDI ファイルの配布元（アプリが実行時にダウンロード） |
 | [LocalDevVPN](https://apps.apple.com/us/app/localdevvpn/id6755608044) | プロプライエタリ（無料） | オンデバイス RSD 接続のためのループバック VPN |
@@ -39,6 +40,8 @@ This program incorporates code derived from:
   - TLocation (https://github.com/truongkma/t-location), AGPL-3.0
     (commit 5e57f815e5958f133dfbaae8252473054adeccf0)
   - idevice (https://github.com/jkcoxson/idevice), MIT
+  - libplist (https://github.com/libimobiledevice/libplist), LGPL-2.1-or-later
+    (idevice.h に含まれる plist 実装部分。全文は Vendor/idevice/LICENSE.libplist)
 ```
 
 ## バイナリの扱い

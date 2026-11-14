@@ -42,15 +42,15 @@ iPhone / Android で取得した GPS 位置を BLE で iPad に送り、iPad 上
 | :--- | :--- | :--- | :--- |
 | P0 | 調査・設計・プロトコル仕様確定 | lead | ✅ 完了（仕様 v1.0.1） |
 | P1 | iOS 実装（Sender/Receiver/注入エンジン/UI） | ios-dev | ✅ 完了（CI 緑: swift test / クロスビルド / xcodebuild リンク） |
-| P2 | Android 実装（Sender/BLE/前景サービス/UI） | android-dev | ✅ 完了（CI 緑: test 53 / assembleDebug / lint） |
+| P2 | Android 実装（Sender/BLE/前景サービス/UI） | android-dev | ✅ 完了（CI 緑: test 54 / assembleDebug / lint） |
 | P3 | プロトコルリポジトリ（仕様正本/Python 実装/テスト） | protocol-dev | ✅ 完了（pytest 200 / CI 緑） |
-| P4 | レビュー（コード・セキュリティ・ライセンス・整合性） | reviewer | ✅ 完了（REVIEW.md / レビュー記録 / REVIEW-FIXES.md） |
+| P4 | レビュー（コード・セキュリティ・ライセンス・整合性） | reviewer | ✅ 完了（REVIEW.md / レビュー記録 / REVIEW-FIXES.md / レビュー記録） |
 | P5 | 公開（GitHub push、CI 緑、Wiki 整備、Release） | lead | ✅ 完了（4 リポジトリ public・Release 作成。Wiki は初回ページのみ手動作成待ち） |
 | P6 | 最終検証・報告 | lead | ✅ 完了 |
 
 ## 5. エージェント運用ルール
 
-- ルートはプロジェクトルート（`p2pgps/`）。各エージェントは担当ディレクトリ（`p2pgps-ios/`, `p2pgps-android/`, `p2pgps-protocol/`）のみ書き込む。
+- ルートは `[local path]
 - 共有契約は `docs/protocol-spec.md`。勝手に変更しない。変更が必要なら lead に報告。
 - 各担当は自分のリポジトリで `git init` + 初回コミットまで行う。**GitHub への push は lead が行う**（レビュー前公開を避けるため）。
 - 参照実装: `_research/t-location`（StikDebug の GPS 固定機能の最小フォーク、AGPL-3.0）、`_research/xtool`（xtool 本体・ドキュメント・サンプル）、`_ref/[private-project]` / `_ref/[private-project]`（ユーザーの既存プロジェクトの構成・CI 慣例）。

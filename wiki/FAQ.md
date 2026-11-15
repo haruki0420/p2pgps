@@ -49,3 +49,13 @@ A. BLE 4.0 の既定 ATT MTU 23（ペイロード 20 bytes）でもフラグメ�
 ## Q. ライセンスは？
 
 A. `p2pgps-ios` は AGPL-3.0（StikDebug/TLocation の派生のため）、`p2pgps-android` と `p2pgps-protocol` は MIT です。詳細は [License](License)。
+
+## Q. 更新を自動化できますか？
+
+A. SideStore / AltStore の**ソース**に対応しています。リポジトリを public にするか公開用リポジトリにミラーしたうえで、SideStore の Sources に次を追加すると、新しいリリースが自動で一覧に表示されます。
+
+```
+https://raw.githubusercontent.com/haruki0420/p2pgps-ios/main/source/apps.json
+```
+
+ソースの更新は CI（Release IPA の成功後）で自動化されています。アプリの更新インストール自体は SideStore 上でタップが必要です（iOS サイドロードの制約）。詳細は [docs/source.md](https://github.com/haruki0420/p2pgps-ios/blob/main/docs/source.md) を参照してください。

@@ -2,11 +2,6 @@
 
 <!-- impeccable:product-schema 1 -->
 
-> **推定を含みます。** `確認ツール` が実行環境のエラー（`実行環境の制約`）で
-> 利用できなかったため、直接のヒアリングは行えていません。以下の Users / Purpose / Positioning は
-> リポジトリのブリーフ（`wiki/History.md`, `wiki/Architecture.md`, `https://github.com/haruki0420/p2pgps-protocol/blob/main/spec/protocol-v1.md`）と
-> ユーザーの依頼文から推定したもので、確定事実ではありません。次回ヒアリングで更新します。
-
 ## Platform
 
 adaptive

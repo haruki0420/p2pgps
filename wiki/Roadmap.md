@@ -8,7 +8,7 @@
 - [x] Python リファレンス実装 + テストベクタ
 - [x] CI（GitHub Actions）
 - [x] 実機での動作検証（BLE 購読・位置注入は Android 実機 + iPad で確認済み）
-- [ ] Wiki の初回ページ作成（GitHub Web UI での初期化が必要）
+- [x] Wiki の初回ページ作成
 
 ## v1.1
 

@@ -1,6 +1,6 @@
-# P2P GPS — プロジェクト計画（オーケストレーション）
+# P2P GPS — これまでの経緯
 
-最終更新: 2026-11-15 / 進行担当: 担当
+最終更新: 2026-11-15
 
 ## 1. ゴール
 
@@ -87,7 +87,7 @@ iPhone / Android で取得した GPS 位置を BLE で iPad に送り、iPad 上
 
 # レビューと修正の記録
 
-P2P GPS は「計画 → 実装 → レビュー → 修正 → 公開」を補助担当連携で実施しました。このページは公開用の要約です（詳細なレビュー報告書はリポジトリ外の作業ディレクトリに保持）。
+P2P GPS は「計画 → 実装 → レビュー → 修正 → 公開」の順で進めました。このページは公開用の要約です。
 
 ## レビューの流れ
 
@@ -108,10 +108,10 @@ P2P GPS は「計画 → 実装 → レビュー → 修正 → 公開」を補�
 
 | リポジトリ | CI | 結果 |
 | :--- | :--- | :--- |
-| p2pgps-ios | GitHub Actions `macos-15` | `swift test` 76 tests / SwiftPM iOS クロスビルド / XcodeGen + `xcodebuild` リンク **成功** |
+| p2pgps-ios | GitHub Actions `macos-15` | `swift test` / SwiftPM iOS クロスビルド / XcodeGen + `xcodebuild` リンク **成功** |
 | p2pgps-android | GitHub Actions `ubuntu-latest` | `testDebugUnitTest` 54 tests / `assembleDebug` / `lintDebug`（Error 0）**成功** |
 | p2pgps-protocol | GitHub Actions `ubuntu-latest` + `windows-latest` | `pytest` 200 passed **成功** |
 
 - 共有テストベクタ 5 ファイルの SHA-256 が 3 リポジトリで一致することを確認。
 - DDI の固定コミット `a1020f81b6429f5ce40408cbe21c690512b613b5` と 3 ファイルの SHA-256 を独立検証。
-- BLE 購読・位置注入は Android 実機 + iPad で確認済み。全画面 UI は未確認です（CI はコンパイル・リンク・ユニットテストまで）。
+- BLE 購読・位置注入は Android 実機 + iPad で確認済みです。全画面 UI・Dynamic Type・Dark Mode は未確認です。

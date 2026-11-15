@@ -45,7 +45,7 @@ iPhone / Android で取得した GPS 位置を BLE で iPad に送り、iPad 上
 | P2 | Android 実装（Sender/BLE/前景サービス/UI） | android-dev | ✅ 完了（CI 緑: test 54 / assembleDebug / lint） |
 | P3 | プロトコルリポジトリ（仕様正本/Python 実装/テスト） | protocol-dev | ✅ 完了（pytest 200 / CI 緑） |
 | P4 | レビュー（コード・セキュリティ・ライセンス・整合性） | reviewer | ✅ 完了（REVIEW.md / レビュー記録 / REVIEW-FIXES.md / レビュー記録） |
-| P5 | 公開（GitHub push、CI 緑、Wiki 整備、Release） | lead | ✅ 完了（4 リポジトリ public・Release 作成。Wiki は初回ページのみ手動作成待ち） |
+| P5 | 公開（GitHub push、CI 緑、Wiki 整備、Release） | lead | ✅ 完了（4 リポジトリ private・Release 作成。Wiki は初回ページのみ手動作成待ち） |
 | P6 | 最終検証・報告 | lead | ✅ 完了 |
 
 ## 5. エージェント運用ルール
@@ -58,7 +58,7 @@ iPhone / Android で取得した GPS 位置を BLE で iPad に送り、iPad 上
 
 ## 6. 受け入れ基準
 
-1. 3 リポジトリが public で、README・LICENSE・Wiki が揃っている。
+1. 3 リポジトリが private で、README・LICENSE・Wiki が揃っている。
 2. iOS: `swift build`（macOS ランナーで iOS 向けクロスビルド）と `xcodebuild`（XcodeGen 生成プロジェクト）が成功。プロトコルのユニットテストが緑。
 3. Android: CI で `assembleDebug` とユニットテストが成功。BLE ペリフェラルの実装が仕様の UUID / パケットと一致。
 4. Protocol: Python 実装のテストが全緑で、仕様書とテストベクタが一致。
@@ -79,3 +79,5 @@ iPhone / Android で取得した GPS 位置を BLE で iPad に送り、iPad 上
 ## 8. 進行ログ
 
 - 2026-11-15: P0 完了（調査・仕様・計画）。リポジトリ作成、P1–P3 を並列着手。
+- 2026-11-15: P1–P6 完了（実装・レビュー・公開・Release）。最終レビューで重大 0 件を確認。
+- 2026-11-15: ユーザー指示により 4 リポジトリを **private** に変更。

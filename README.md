@@ -74,7 +74,6 @@ python -m pytest
 - [アーキテクチャ](docs/architecture.md)
 - [用語集（Glossary）](docs/glossary.md) — DDI・pairing file・BLE などの用語解説
 - [ネットワーク構成（LocalDevVPN の仕組みと代替手段）](docs/networking.md) — Tailscale / WireGuard / Surge での実装
-- [カーナビ用途での適性](docs/car-navigation.md) — 遅延・精度・推奨設定
 - [プロジェクト計画 / 進行状況](docs/plan.md)
 - [レビューと修正の記録](docs/review-summary.md)
 - [検証とリリース](docs/verification.md)

@@ -8,7 +8,6 @@
 - [Design](Design)
 - [Setup iPad](Setup-iPad)
 - [Networking（VPN の仕組み）](Networking)
-- [Car Navigation（カーナビ適性）](Car-Navigation)
 - [Build with xtool](Build-with-xtool)
 - [Troubleshooting](Troubleshooting)
 - [FAQ](FAQ)

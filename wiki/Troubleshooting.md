@@ -10,13 +10,14 @@
 
 ## 位置が反映されない（iPad）
 
-まず **診断** 画面 →「接続診断を実行」を押してください。pairing file の形式（RPPairing か）、Wi-Fi、`10.7.0.1:49152` への TCP 到達性を自動で確認します。「トンネル / DDI」の **FFI エラー**（code とメッセージ）も原因特定に役立ちます。
+まず **診断** 画面 →「接続診断を実行」を押してください。pairing file の形式（RPPairing か）、Wi-Fi、Remote Pairing ポートへの TCP 到達性を自動で確認します。「トンネル / DDI」の **FFI エラー**（code とメッセージ）も原因特定に役立ちます。
 
 | 症状 | 対処 |
 | :--- | :--- |
 | トンネルが繋がらない | LocalDevVPN が接続済みか。Wi-Fi に接続しているか。ターゲット IP が `10.7.0.1` か |
 | 診断で pairing file が「lockdown のみ」 | iloader でエクスポートし直す（RPPairing を含むファイル） |
 | 診断で TCP が「接続待ち / 失敗」 | LocalDevVPN を再接続。他の VPN を切断。Developer Mode とローカルネットワークの許可を確認 |
+| 診断の「Remote Pairing ポート」が Fallback になる | 設定 > プライバシーとセキュリティ > ローカルネットワーク で P2P GPS を ON にして、アプリを再起動 |
 | LocalDevVPN が使えない / 他の VPN と競合する | Tailscale + リフレクターなどの代替手段があります（[Networking](Networking)）。iOS で同時に使える VPN は 1 つだけです |
 | `Developer Disk Image is not mounted` | Settings → DDI を再ダウンロード。Developer Mode が ON か |
 | `pairing file` エラー | pairing file を再インポート。期限切れの場合は再取得 |

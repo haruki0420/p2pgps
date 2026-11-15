@@ -67,12 +67,13 @@
 | **usbmuxd** | USB 経由で iOS デバイスと通信するためのデーモン | iloader がデバイスを認識するために必要（Windows は iTunes、macOS は標準、Linux はパッケージ） |
 | **IPA** | iOS アプリのパッケージファイル（Android の APK に相当） | Releases に未署名 IPA を添付しています |
 | **pairing file** | Apple デバイスとコンピュータ（または自分自身）をペアリングした記録ファイル | iPad 自身の RSD 接続に必要。アプリにインポートして使います。秘密情報なので扱いに注意 |
-| **LocalDevVPN** | 端末自身を `10.7.0.1` としてループバックさせる VPN アプリ（NetworkExtension のパケット反射） | これがないと iPad が自分自身の RSD（ポート 49152）に接続できません。仕組みは [Networking](https://github.com/haruki0420/p2pgps/wiki/Networking) を参照 |
+| **LocalDevVPN** | 端末自身を `10.7.0.1` としてループバックさせる VPN アプリ（NetworkExtension のパケット反射） | これがないと iPad が自分自身の Remote Pairing サービスに接続できません。仕組みは [Networking](https://github.com/haruki0420/p2pgps/wiki/Networking) を参照 |
 | **StosVPN** | LocalDevVPN と同じ方式のオープンソース VPN（SideStore 公式） | LocalDevVPN が使えない環境の代替 |
 | **Tailscale** | WireGuard ベースのメッシュ VPN。iOS では Packet Tunnel Provider として動く | 常時接続のまま、tailnet 上のリフレクター経由で自分自身の RSD に到達する使い方ができます（[Networking](https://github.com/haruki0420/p2pgps/wiki/Networking)） |
 | **リフレクター（reflector）** | パケットの送信元と宛先を入れ替えて送り返す小さなプログラム | LocalDevVPN / Tailscale / WireGuard 方式の中心となる仕組み |
 | **NetworkExtension / Packet Tunnel Provider** | iOS で VPN を実装するためのフレームワーク | LocalDevVPN / StosVPN / Tailscale が使用。entitlement が必要 |
-| **RSD（Remote Service Discovery）** | iOS 17 以降のデバイス内部サービスを発見・接続する仕組み | `10.7.0.1:49152` に接続し、位置シミュレーションサービスを呼び出します |
+| **RSD（Remote Service Discovery）** | iOS 17 以降のデバイス内部サービスを発見・接続する仕組み | `10.7.0.1` の Remote Pairing サービスに接続し、位置シミュレーションサービスを呼び出します（ポートは Bonjour で自動検出、フォールバック 49152） |
+| **Remote Pairing サービス** | RSD への接続を受け付けるデバイス側のサービス。Bonjour（`_remotepairing._tcp`）で広告されます | 固定ポートとは限らないため、アプリが Bonjour で検出します。検出にはローカルネットワークの許可が必要です |
 | **DDI（Developer Disk Image）** | Apple が提供する開発用のディスクイメージ | マウントすると位置シミュレーション等の開発用サービスが使えます。アプリがダウンロードしてマウントします |
 | **trustcache** | 「このバイナリは信頼できる」というリスト | DDI の一部。`Image.dmg.trustcache` としてダウンロードします |
 | **BuildManifest** | DDI のビルド情報ファイル | `BuildManifest.plist` としてダウンロードします |

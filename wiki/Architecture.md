@@ -28,7 +28,7 @@ iPhone/Android ──BLE GATT──▶ iPad ──idevice FFI──▶ iPadOS (l
 3. 注入 ON なら `LocationSimulationEngine.set(lat, lon)` を直列キューで実行。
 4. エンジン内部:
    - pairing file を読み込み
-   - `tunnel_create_rppairing` で `10.7.0.1:49152` に接続（LocalDevVPN 経由）
+   - `tunnel_create_rppairing` で `10.7.0.1:<Bonjour で検出した Remote Pairing ポート>` に接続（LocalDevVPN 経由。検出できない場合は 49152）
    - `remote_server_connect_rsd` で `com.apple.dt.simulatelocation` に接続
    - DDI が未マウントなら `mountPersonalDDI`
    - `location_simulation_new` → `location_simulation_set(lat, lon)`

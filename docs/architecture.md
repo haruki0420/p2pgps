@@ -44,13 +44,13 @@ Sources/
 [TLocation](https://github.com/truongkma/t-location)（StikDebug の GPS 固定機能だけを残した AGPL-3.0 フォーク）から以下を移植する。
 
 1. **pairing file**: 端末自身の pairing record（`.mobiledevicepairing`）を Files からインポート。`PairingFileStore` で Documents に保存。
-2. **LocalDevVPN**: 端末自身を `10.7.0.1` としてループバックさせる VPN。これが無いと自分自身の RSD (port 49152) に接続できない。
-3. **Tunnel**: `tunnel_create_rppairing` で `10.7.0.1:49152` に RSD ハンドシェイクし、`remote_server_connect_rsd` で `com.apple.dt.simulatelocation` サービスへ接続。
+2. **LocalDevVPN**: 端末自身を `10.7.0.1` としてループバックさせる VPN。これが無いと自分自身の Remote Pairing サービスに接続できない。
+3. **Tunnel**: `tunnel_create_rppairing` で `10.7.0.1:<Bonjour で検出した Remote Pairing ポート>` に RSD ハンドシェイクし、`remote_server_connect_rsd` で `com.apple.dt.simulatelocation` サービスへ接続（検出できない場合は 49152 にフォールバック）。
 4. **DDI**: `DeveloperDiskImageService` が GitHub の [doronz88/DeveloperDiskImage](https://github.com/doronz88/DeveloperDiskImage) から `Image.dmg` / `Image.dmg.trustcache` / `BuildManifest.plist` を取得し、`mountPersonalDDI` でマウント。
 5. **Location simulation**: `location_simulation_new` → `location_simulation_set(lat, lon)` を 1 秒間隔で呼ぶ。停止時は `location_simulation_clear` → `location_simulation_free`。
 6. **フォールバック**: 埋め込みエンジンが使えない場合、TLocation の URL スキーム `tlocation://simulate-location?lat=..&lon=..` / `tlocation://clear-location` へ委譲するモードを設定で選択可能にする。
 
-FFI は `libidevice_ffi.a`（[idevice](https://github.com/jkcoxson/idevice), MIT）を静的リンクする。リポジトリには含めず、`scripts/fetch-vendor.sh` が TLocation の固定コミットから取得して SHA-256 を検証する。
+FFI は `libidevice_ffi.a`（[idevice](https://github.com/jkcoxson/idevice), MIT）を静的リンクする。リポジトリには含めず、`scripts/fetch-vendor.sh` が StikDebug の固定コミット（iOS 26 の Remote Pairing 対応を含む idevice ビルド）から取得して SHA-256 を検証する。
 
 ### 2.4 バックグラウンド
 

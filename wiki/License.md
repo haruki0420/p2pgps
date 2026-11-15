@@ -16,8 +16,18 @@
 | [StikDebug](https://github.com/StikDebug/StikDebug) | AGPL-3.0 | オンデバイス位置シミュレーションの原実装 |
 | [TLocation](https://github.com/truongkma/t-location) | AGPL-3.0 | StikDebug の GPS 固定機能の最小フォーク（移植元） |
 | [idevice](https://github.com/jkcoxson/idevice) | MIT | Apple デバイスサービス通信ライブラリ（`libidevice_ffi.a`） |
+| [Material Icons](https://github.com/google/material-design-icons) | Apache-2.0 | Android のランチャー / 通知アイコンの位置ピンの元図形 |
 | [xtool](https://github.com/xtool-org/xtool) | MIT | Mac なしの iOS ビルドツールチェーン |
 | [doronz88/DeveloperDiskImage](https://github.com/doronz88/DeveloperDiskImage) | 上流に従う | DDI ファイル配布元 |
+
+## 画像・アイコン
+
+| 対象 | 出典・ライセンス |
+| :--- | :--- |
+| iOS アプリアイコン | 本プロジェクトのオリジナル（測量標モチーフ）。第三者素材は不使用 |
+| Android ランチャー / 通知アイコン | Material Icons の位置ピン（Apache-2.0）の派生。`p2pgps-android/NOTICE` に帰属を記載 |
+| README のバッジ | shields.io が生成（リポジトリに画像ファイルは含めない） |
+| StikDebug / TLocation / iloader のスクリーンショット | 本プロジェクトには含めていない |
 
 ## AGPL-3.0 の注意
 

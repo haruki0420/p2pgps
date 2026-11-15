@@ -21,8 +21,19 @@ P2P GPS は複数の上流プロジェクトの上に成り立っています。
 | [idevice](https://github.com/jkcoxson/idevice)（© jkcoxson） | MIT | Apple デバイスサービスとの通信ライブラリ。`libidevice_ffi.a` として静的リンク |
 | [libplist](https://github.com/libimobiledevice/libplist)（© Nikias Bassen / Jonathan Beck） | LGPL-2.1-or-later | `idevice.h` に含まれる plist 実装部分。`p2pgps-ios` の `Vendor/idevice/LICENSE.libplist` に全文を同梱 |
 | [xtool](https://github.com/xtool-org/xtool) | MIT | Mac なしで iOS アプリをビルドするツールチェーン |
+| [Material Icons](https://github.com/google/material-design-icons)（© Google LLC） | Apache-2.0 | Android のランチャー / 通知アイコンの位置ピン（`ic_launcher_foreground.xml` / `ic_stat_location.xml`）の元図形 |
 | [doronz88/DeveloperDiskImage](https://github.com/doronz88/DeveloperDiskImage) | 上流の表記に従う | DDI ファイルの配布元（アプリが実行時にダウンロード） |
 | [LocalDevVPN](https://apps.apple.com/us/app/localdevvpn/id6755608044) | プロプライエタリ（無料） | オンデバイス RSD 接続のためのループバック VPN |
+
+## 画像・アイコン
+
+| 対象 | 出典・ライセンス |
+| :--- | :--- |
+| iOS アプリアイコン（`p2pgps-ios/Resources/AppIcon*.png`） | 本プロジェクトのオリジナル（測量標モチーフ）。第三者素材は不使用 |
+| Android ランチャーアイコン（`ic_launcher_foreground.xml`） | Material Icons の位置ピン（Apache-2.0）を元にした派生。`p2pgps-android/NOTICE` に帰属を記載 |
+| Android 通知アイコン（`ic_stat_location.xml`） | Material Icons の "place"（Apache-2.0）の派生。`p2pgps-android/NOTICE` に帰属を記載 |
+| README のバッジ | shields.io が生成する画像（外部サービス）。リポジトリには画像ファイルを含めない |
+| StikDebug / TLocation / iloader のスクリーンショット | 本プロジェクトには含めていない |
 
 ## `p2pgps-ios` の NOTICE（要旨）
 
@@ -46,9 +57,9 @@ This program incorporates code derived from:
 
 ## バイナリの扱い
 
-`libidevice_ffi.a`（約 92.6 MB）はリポジトリに含めず、`scripts/fetch-vendor.sh` が TLocation の固定コミットから取得して SHA-256 を検証します。
+`libidevice_ffi.a`（約 54.4 MB）はリポジトリに含めず、`scripts/fetch-vendor.sh` が StikDebug の固定コミットから取得して SHA-256 を検証します。
 
-- SHA-256: `6524066D54EF23E00D46445C04DFC694E180196D54119D718F68434FA225BE35`
-- 取得元: `https://raw.githubusercontent.com/truongkma/t-location/5e57f815e5958f133dfbaae8252473054adeccf0/TLocation/idevice/libidevice_ffi.a`
+- SHA-256: `4DB23FE1D342927B9480BB9A8577F219994365621DC28AA0018E23EA1990ECC8`
+- 取得元: `https://raw.githubusercontent.com/StikDebug/StikDebug/7a80dfce28eeb501faca6498d1746949ac921e74/StikDebug/idevice/libidevice_ffi.a`
 
 MIT ライセンスの `idevice.h` と `module.modulemap` はリポジトリに含めます（帰属表示付き）。

@@ -18,6 +18,7 @@
 | 診断で pairing file が「lockdown のみ」 | iloader でエクスポートし直す（RPPairing を含むファイル） |
 | 診断で TCP が「接続待ち / 失敗」 | LocalDevVPN を再接続。他の VPN を切断。Developer Mode とローカルネットワークの許可を確認 |
 | 診断の「Remote Pairing ポート」が Fallback になる | 設定 > プライバシーとセキュリティ > ローカルネットワーク で P2P GPS を ON にして、アプリを再起動 |
+| iOS 27 で `ConnectionReset`（code 54）になる | iloader の pairing file が RSD で拒否されることがあります。[idevice_pair](https://github.com/jkcoxson/idevice_pair/releases) で Remote pairing を作り直し、Validate → Save to file → 本アプリで再インポート。改善しなければアプリを完全削除 → iPad 再起動 → 再インストール |
 | LocalDevVPN が使えない / 他の VPN と競合する | Tailscale + リフレクターなどの代替手段があります（[Networking](Networking)）。iOS で同時に使える VPN は 1 つだけです |
 | `Developer Disk Image is not mounted` | Settings → DDI を再ダウンロード。Developer Mode が ON か |
 | `pairing file` エラー | pairing file を再インポート。期限切れの場合は再取得 |

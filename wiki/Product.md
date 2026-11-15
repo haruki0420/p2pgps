@@ -4,7 +4,7 @@
 
 > **推定を含みます。** `確認ツール` が実行環境のエラー（`実行環境の制約`）で
 > 利用できなかったため、直接のヒアリングは行えていません。以下の Users / Purpose / Positioning は
-> リポジトリのブリーフ（`docs/plan.md`, `docs/architecture.md`, `docs/protocol-spec.md`）と
+> リポジトリのブリーフ（`wiki/History.md`, `wiki/Architecture.md`, `https://github.com/haruki0420/p2pgps-protocol/blob/main/spec/protocol-v1.md`）と
 > ユーザーの依頼文から推定したもので、確定事実ではありません。次回ヒアリングで更新します。
 
 ## Platform
@@ -58,7 +58,7 @@ iPhone / Android が取得した GPS 位置を BLE GATT で iPad に転送し、
 
 ## Evidence on Hand
 
-- 仕様: `docs/protocol-spec.md`（v1 凍結）, `docs/architecture.md`
+- 仕様: `https://github.com/haruki0420/p2pgps-protocol/blob/main/spec/protocol-v1.md`（v1 凍結）, `wiki/Architecture.md`
 - 参照実装: TLocation（AGPL-3.0, 上流コミット固定）
 - 既存の xtool プロジェクト（構成・CI 慣例）
 - 実機スクリーンショット・利用ログ: **無し**（設計は推定）

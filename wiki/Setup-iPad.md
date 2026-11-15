@@ -41,6 +41,8 @@ iloader で SideStore をインストール
 
 ## 2. pairing file を用意する（iloader から注入 / エクスポート）
 
+> **iOS 27 でうまくいかない場合**: 実機（iOS 27.2 / Windows）では、iloader の pairing file では接続できず、**`idevice_pair--windows-x86_64`（Windows x86_64 版）** で作り直すと成功しました。下の「iOS 27 の pairing file」も参照してください。
+
 iloader は SideStore 用の **RPPairing / lockdown pairing file** を自動で配置します。本アプリでも同じ pairing file を使うため、**iloader からエクスポート**して iPad の Files に置きます。
 
 1. iloader でデバイスを選択します。
@@ -105,5 +107,15 @@ Settings →「DDI をダウンロード」を実行します。アプリが以�
 | トンネルが繋がらない | 診断画面で pairing file の形式・Wi-Fi・Remote Pairing ポートへの TCP 到達性を確認。LocalDevVPN が接続済みか。Wi-Fi に接続しているか。ターゲット IP が `10.7.0.1` か。Developer Mode が ON か。ローカルネットワークの許可があるか。 |
 | 診断でポート検出が Fallback になる | 設定 > プライバシーとセキュリティ > ローカルネットワーク で P2P GPS を ON にして、アプリを再起動。 |
 | DDI がマウントできない | DDI を再取得。Developer Mode が ON か。 |
+
+## 9. iOS 27 の pairing file
+
+iOS 27 では、iloader が作る pairing file が iPad に拒否されることがあります（`ConnectionReset` / code 54）。
+
+1. [idevice_pair](https://github.com/jkcoxson/idevice_pair/releases) の **Windows x86_64 版（`idevice_pair--windows-x86_64`）** を起動する（Windows は iTunes / usbmuxd が必要）。
+2. デバイスを選ぶ → **Remote pairing** → **Create** → **Validate**。
+3. **Save to file…** で保存する。
+4. アプリの設定で古い pairing file を削除し、新しいファイルを読み込む。
+5. 改善しない場合は、アプリを完全に削除 → iPad を再起動 → 再インストール → 新しい pairing file を読み込む。
 
 詳しくは [Troubleshooting](Troubleshooting) を参照してください。

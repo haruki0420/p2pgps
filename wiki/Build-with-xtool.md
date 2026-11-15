@@ -37,7 +37,7 @@ xtool dev run
 
 ## Windows の場合
 
-xtool は Windows ネイティブでは動作しません。**WSL2** を使い、USB パススルー（usbipd）で iOS 端末を WSL に渡してください。詳細は xtool の [Installation (Linux/Windows)](https://xtool.sh/documentation/xtooldocs/installation-linux) を参照。
+xtool は Windows ネイティブでは動作しません。**WSL2** を使い、USB パススルー（usbipd）で iOS 端末を WSL に渡してください。詳細は xtool の [Installation (Linux/Windows)](https://xtool.sh/documentation/xtoolwiki/installation-linux) を参照。
 
 ## トラブル
 

@@ -1,52 +1,40 @@
-# Troubleshooting
+# 困ったとき
 
-## 接続できない
+## まず確認すること
 
-| 症状 | 確認すること |
-| :--- | :--- |
-| iPad の一覧に送信側が出ない | 送信側で「送信開始」が ON か。iPad の Bluetooth が ON か。距離（10 m 以内）。Android は位置情報権限が「常に許可」か |
-| 接続はできるが位置が来ない | 送信側で START を送っているか（Receiver が自動で START を書きます）。Status の state が Streaming か |
-| すぐ切断される | 送信側アプリがバックグラウンドで停止していないか。Android は前景サービス通知が出ているか。iPhone は「常に許可」か |
+1. 送信側で「送信を開始」を押しているか
+2. iPad の Bluetooth が ON か
+3. 2 台を近く（10 m 以内）に置いているか
+4. iPad で LocalDevVPN が接続済みか
+5. iPad で Developer Mode が ON か
 
-## 位置が反映されない（iPad）
-
-まず **診断** 画面 →「接続診断を実行」を押してください。pairing file の形式（RPPairing か）、Wi-Fi、Remote Pairing ポートへの TCP 到達性を自動で確認します。「トンネル / DDI」の **FFI エラー**（code とメッセージ）も原因特定に役立ちます。
+## 症状別
 
 | 症状 | 対処 |
 | :--- | :--- |
-| トンネルが繋がらない | LocalDevVPN が接続済みか。Wi-Fi に接続しているか。ターゲット IP が `10.7.0.1` か |
-| 診断で pairing file が「lockdown のみ」 | iloader でエクスポートし直す（RPPairing を含むファイル） |
-| 診断で TCP が「接続待ち / 失敗」 | LocalDevVPN を再接続。他の VPN を切断。Developer Mode とローカルネットワークの許可を確認 |
-| 診断の「Remote Pairing ポート」が Fallback になる | 設定 > プライバシーとセキュリティ > ローカルネットワーク で P2P GPS を ON にして、アプリを再起動 |
-| iOS 27 で `ConnectionReset`（code 54）になる | iloader の pairing file が RSD で拒否されることがあります。[idevice_pair](https://github.com/jkcoxson/idevice_pair/releases) で Remote pairing を作り直し、Validate → Save to file → 本アプリで再インポート。改善しなければアプリを完全削除 → iPad 再起動 → 再インストール |
-| LocalDevVPN が使えない / 他の VPN と競合する | Tailscale + リフレクターなどの代替手段があります（[Networking](Networking)）。iOS で同時に使える VPN は 1 つだけです |
-| `Developer Disk Image is not mounted` | Settings → DDI を再ダウンロード。Developer Mode が ON か |
-| `pairing file` エラー | pairing file を再インポート。期限切れの場合は再取得 |
-| 注入 ON にしても変わらない | 他に位置シミュレーションを行うアプリ（TLocation / StikDebug）が同時に動いていないか。終了して再試行 |
-| ポートが使用中（errno 48） | 他の JIT / デバッグ / VPN アプリを終了。LocalDevVPN を再接続。iPad を再起動 |
+| iPad の一覧に送信側が出ない | 送信側で「送信を開始」を押す。iPad の Bluetooth を ON。近づける。Android は位置情報を「常に許可」にする |
+| 接続できるが位置が来ない | 送信側が現在地を測位できているか確認。屋内では時間がかかることがある。iPad 側で「位置情報を反映」が ON か確認 |
+| すぐ切れる | 送信側アプリを画面の前に出す。Android は通知が出ているか確認。iPhone は位置情報を「常に許可」にする |
+| 位置が変わらない | iPad で「位置情報を反映」を ON にする。他の位置変更アプリ（TLocation / StikDebug）が動いていないか確認 |
+| DDI がマウントできない | 設定で DDI をダウンロードし直す。Developer Mode と LocalDevVPN を確認 |
+| pairing file が通らない | 設定で pairing file を読み込み直す。iOS 27 では下の「iOS 27 の pairing file」を見る |
+| ポートが使用中と言われる | 他の VPN / デバッグアプリを終了。LocalDevVPN を再接続。iPad を再起動 |
 
-## ビルド
+## iOS 27 の pairing file
 
-| 症状 | 対処 |
-| :--- | :--- |
-| `libidevice_ffi.a` が無い | `./scripts/fetch-vendor.sh` を実行（Windows は `scripts/fetch-vendor.ps1`） |
-| SHA-256 不一致 | ダウンロードが壊れている。再実行。上流のファイルが変わった場合は Issue へ |
-| `swift build` で iOS SDK が見つからない | `xtool sdk list` で darwin があるか。`xtool setup` を再実行 |
-| リンクエラー `_location_simulation_*` | Vendor の取得と `-L Vendor/idevice -lidevice_ffi` の設定を確認 |
+iOS 27 では、iloader が作る pairing file が iPad に拒否されることがあります。
 
-## ログの確認
+- 実機（iOS 27.2 / Windows）では、iloader では直らず、**`idevice_pair--windows-x86_64`（Windows x86_64 版）** で作り直すと成功しました。
+- 手順: [idevice_pair](https://github.com/jkcoxson/idevice_pair/releases) を起動 → デバイスを選ぶ → Remote pairing → Create → Validate → Save to file → アプリの設定で古い pairing file を削除 → 新しいファイルを読み込む。
 
-- iOS: アプリの Diagnostics 画面、または `Console.app` / `idevicesyslog`
-- Android: `adb logcat -s GpsSenderService`
+## 詳しい情報（開発者向け）
 
-## pairing file が通らない（iOS 27）
-
-- iOS 27 では iloader の pairing file が RSD ハンドシェイクで拒否されることがあります（`ConnectionReset` / code 54）。
-- **実機での確認（2026-11-15、iOS 27.2 / Windows）**: iloader では解消せず、**`idevice_pair--windows-x86_64`（Windows x86_64 版）** で RPPairing を作り直したところ成功しました。
-- 手順は [Setup iPad](Setup-iPad) と [Troubleshooting（iOS）](https://github.com/haruki0420/p2pgps-ios/wiki/Troubleshooting) を参照してください。
+- 接続の確認は、アプリの「困ったとき」画面で「つながらないときの確認」を押す。
+- 技術的なエラー（`ConnectionReset`、`FFI`、`RSD`、`DDI` など）は、同じ画面の「動作記録」に残る。
+- ビルドで `libidevice_ffi.a` が無い場合は `./scripts/fetch-vendor.sh` を実行する（Windows は `scripts/fetch-vendor.ps1`）。
 
 ## 既知の制約
 
-- 実機での動作検証は未実施です（開発環境に実機が無いため）。
-- iOS の位置シミュレーションは Apple の非公開サービスに依存するため、OS アップデートで壊れる可能性があります。
-- BLE は 1 対 1 接続のみ（v1）。
+- BLE 購読・位置注入・シミュレート位置の移動は Android 実機 + iPad で確認済みです。全画面 UI・Dynamic Type・Dark Mode は未確認です。
+- iPad の位置変更は Apple の非公開機能に依存するため、OS の更新で動かなくなる可能性があります。
+- Bluetooth は 1 対 1 接続です。

@@ -1,48 +1,41 @@
-# P2P GPS Wiki — Home
+# P2P GPS Wiki
 
-iPhone / Android で取得した GPS 位置情報を **Bluetooth Low Energy (BLE)** で iPad に送り、iPad 上で「その場所にいる」ように位置情報を反映するプロジェクトです。
+スマートフォンの現在地を Bluetooth で iPad に送り、iPad の位置として使えるようにするプロジェクトです。位置情報はクラウドを通らず、端末同士だけでやり取りします。
 
-Mac が無くてもビルドできるよう、iOS アプリは [xtool](https://github.com/xtool-org/xtool) を前提にしています。iPad 側の位置固定は [StikDebug](https://github.com/StikDebug/StikDebug) 由来の GPS シミュレーション機能（最小フォーク [TLocation](https://github.com/truongkma/t-location)）を流用しています。
+## アプリ
 
-## リポジトリ
+| リポジトリ | 役割 |
+| :--- | :--- |
+| [p2pgps](https://github.com/haruki0420/p2pgps) | 全体の説明・セットアップ手順（この Wiki） |
+| [p2pgps-ios](https://github.com/haruki0420/p2pgps-ios) | iPhone 用の送信アプリ / iPad 用の受信アプリ |
+| [p2pgps-android](https://github.com/haruki0420/p2pgps-android) | Android 用の送信アプリ |
+| [p2pgps-protocol](https://github.com/haruki0420/p2pgps-protocol) | 通信仕様とテスト用の実装 |
 
-| リポジトリ | 役割 | 技術 |
-| :--- | :--- | :--- |
-| [p2pgps-ios](https://github.com/haruki0420/p2pgps-ios) | iPhone = Sender / iPad = Receiver のユニバーサルアプリ | Swift 6 / SwiftUI / CoreBluetooth / xtool |
-| [p2pgps-android](https://github.com/haruki0420/p2pgps-android) | Android Sender | Kotlin / Jetpack Compose / BLE ペリフェラル |
-| [p2pgps-protocol](https://github.com/haruki0420/p2pgps-protocol) | BLE プロトコル仕様の正本・Python リファレンス実装・テストベクタ | Python |
+## 使い方の流れ
 
-## 全体像
+1. iPad に受信アプリを入れて、位置を書き換える準備をする
+2. iPhone または Android に送信アプリを入れる
+3. 送信アプリで「送信を開始」、iPad 側で送信元を選んで「位置情報を反映」を ON にする
 
-```
-┌──────────────────────┐   BLE GATT (20 bytes, 1 Hz)   ┌──────────────────────────┐
-│ iPhone / Android     │ ────────────────────────────▶ │ iPad                     │
-│  位置情報を取得       │  Service: B1E5A000-...        │  BLE セントラル           │
-│  BLE ペリフェラル     │  Location / Status / Extended │  MapKit 表示              │
-└──────────────────────┘ ◀──────────────────────────── │  StikDebug 由来エンジンで │
-                         Control (START/STOP/interval) │  位置をシミュレート        │
-                                                       └──────────────────────────┘
-```
-
-- 位置情報はクラウドを経由しません。端末間の P2P のみです。
-- 位置パケットは 20 bytes 固定（ATT MTU 23 でも分割不要）。
-
-## ページ一覧
+## はじめての方
 
 - [Getting Started](Getting-Started) — 最短で動かすまでの手順
-- [Glossary（用語集）](Glossary) — DDI・pairing file・BLE などの用語解説
-- [Architecture](Architecture) — システム構成・データフロー
-- [Protocol](Protocol) — BLE プロトコル v1 の要約（正本は p2pgps-protocol）
-- [Design](Design) — 視覚世界・トークン・anti-slop チェックリスト
-- [Setup iPad](Setup-iPad) — Developer Mode / LocalDevVPN / pairing file / DDI
-- [Networking（VPN の仕組みと代替手段）](Networking) — LocalDevVPN の原理・Tailscale / WireGuard での実装
-- [Build with xtool](Build-with-xtool) — Mac なしで iOS アプリをビルドする
-- [Troubleshooting](Troubleshooting) — よくあるエラーと対処
-- [FAQ](FAQ)
-- [Roadmap](Roadmap)
-- [License](License)
+- [Setup iPad](Setup-iPad) — iPad の準備（Developer Mode / LocalDevVPN / pairing file / DDI）
+- [困ったとき](Troubleshooting)
+- [よくある質問](FAQ)
 
-## ステータス
+## 詳しく知りたい方
 
-- 2026-11-15: プロトコル v1 仕様確定、3 リポジトリ実装・CI 整備。
-- 実機での動作検証は未実施です（開発環境に Mac / iOS 実機 / Android 実機が無いため）。ビルドとユニットテストは GitHub Actions で検証しています。
+- [用語集](Glossary)
+- [全体の仕組み](Architecture)
+- [通信仕様](Protocol)
+- [ネットワークの仕組み](Networking)
+- [デザイン](Design)
+- [ライセンス](License)
+- [確認したこと](Verification)
+- [これまでの経緯](History)
+
+## 状態
+
+- 2026-11-15: 通信仕様 v1 を確定。
+- BLE 購読・位置注入・シミュレート位置の移動は Android 実機 + iPad で確認済みです。全画面 UI・Dynamic Type・Dark Mode は未確認です。

@@ -58,4 +58,4 @@ A. SideStore / AltStore の**ソース**に対応しています。`p2pgps-ios` 
 https://raw.githubusercontent.com/haruki0420/p2pgps-ios/main/source/apps.json
 ```
 
-ソースの更新は CI（Release IPA の成功後）で自動化されています。アプリの更新インストール自体は SideStore 上でタップが必要です（iOS サイドロードの制約）。詳細は [docs/source.md](https://github.com/haruki0420/p2pgps-ios/blob/main/docs/source.md) を参照してください。
+ソースの更新は CI（Release IPA の成功後）で自動化されています。アプリの更新インストール自体は SideStore 上でタップが必要です（iOS サイドロードの制約）。詳細は [wiki/Source.md](https://github.com/haruki0420/p2pgps-ios/blob/main/wiki/Source.md) を参照してください。

@@ -192,6 +192,14 @@ iPad ◀──────────────── Tailscale ◀───�
 
 > 接続先ポートは固定ではなく、アプリが **Bonjour（`_remotepairing._tcp`）で検出**します（検出できない場合は 49152 にフォールバック）。反射役は TCP/UDP のポートを問わずアドレスを入れ替えるだけなので、ポートの設定変更は不要です。
 
+### 5.1 pairing file の入手（iOS 27 以降）
+
+iOS 27 では iloader がエクスポートする pairing file が RSD ハンドシェイクで拒否されることがあります。実機（iOS 27.2 / Windows）では **iloader では解消せず、`idevice_pair--windows-x86_64`（Windows x86_64 版）で RPPairing を作り直すと成功**しました。詳細は [p2pgps-ios の receiver-setup](https://github.com/haruki0420/p2pgps-ios/blob/main/wiki/Setup-iPad.md) を参照してください。
+
+### 5.2 高頻度更新
+
+送信間隔は 500 ms（2 Hz）まで設定できます。Android は位置取得も送信間隔に合わせて 500 ms で要求します（電池消費は増えます）。iOS の CoreLocation は更新頻度を保証しないため、実測は約 1 Hz のままです。
+
 ---
 
 ## 6. 参考リンク

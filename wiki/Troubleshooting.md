@@ -39,6 +39,17 @@
 - iOS: アプリの Diagnostics 画面、または `Console.app` / `idevicesyslog`
 - Android: `adb logcat -s GpsSenderService`
 
+## pairing file が通らない（iOS 27）
+
+- iOS 27 では iloader の pairing file が RSD ハンドシェイクで拒否されることがあります（`ConnectionReset` / code 54）。
+- **実機での確認（2026-11-15、iOS 27.2 / Windows）**: iloader では解消せず、**`idevice_pair--windows-x86_64`（Windows x86_64 版）** で RPPairing を作り直したところ成功しました。
+- 手順は [Setup iPad](Setup-iPad) と [Troubleshooting（iOS）](https://github.com/haruki0420/p2pgps-ios/wiki/Troubleshooting) を参照してください。
+
+## カーナビ用途
+
+- 遅延・精度・推奨設定は [Car Navigation（カーナビ適性）](Car-Navigation) を参照してください。
+- カジュアルなナビには使えますが、車線案内・安全運転支援には使わないでください。
+
 ## 既知の制約
 
 - 実機での動作検証は未実施です（開発環境に実機が無いため）。

@@ -192,6 +192,14 @@ iPad ◀──────────────── Tailscale ◀───�
 
 > 接続先ポートは固定ではなく、アプリが **Bonjour（`_remotepairing._tcp`）で検出**します（検出できない場合は 49152 にフォールバック）。反射役は TCP/UDP のポートを問わずアドレスを入れ替えるだけなので、ポートの設定変更は不要です。
 
+### 5.1 pairing file の入手（iOS 27 以降）
+
+iOS 27 では iloader がエクスポートする pairing file が RSD ハンドシェイクで拒否されることがあります。実機（iOS 27.2 / Windows）では **iloader では解消せず、`idevice_pair--windows-x86_64`（Windows x86_64 版）で RPPairing を作り直すと成功**しました。詳細は [p2pgps-ios の receiver-setup](https://github.com/haruki0420/p2pgps-ios/blob/main/docs/receiver-setup.md) を参照してください。
+
+### 5.2 カーナビ用途での注意
+
+遅延・精度・推奨設定は [カーナビ用途での適性](car-navigation.md) にまとめています。カジュアルなナビには使えますが、車線案内・安全運転支援には使わないでください。
+
 ---
 
 ## 6. 参考リンク

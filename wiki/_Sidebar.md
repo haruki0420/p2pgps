@@ -8,6 +8,7 @@
 - [Glossary](Glossary)
 - [Architecture](Architecture)
 - [Design](Design)
+- [Build with xtool](Build-with-xtool)
 - [Protocol](Protocol)
 - [Networking](Networking)
 - [Product](Product)

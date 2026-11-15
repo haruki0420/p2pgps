@@ -31,8 +31,8 @@
 - [通信仕様](Protocol)
 - [ネットワークの仕組み](Networking)
 - [デザイン](Design)
+- [ビルド（xtool）](Build-with-xtool)
 - [ライセンス](License)
-- [確認したこと](Verification)
 - [検証状況](Verification)
 
 ## 状態

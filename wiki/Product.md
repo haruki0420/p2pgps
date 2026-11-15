@@ -8,7 +8,7 @@ adaptive
 
 ## Stack
 
-- iOS/iPadOS: Swift 6 + SwiftUI + CoreBluetooth + CoreLocation + MapKit。SwiftPM + [xtool](https://github.com/xtool-org/xtool)（Mac なしビルド）。位置注入は TLocation 由来の idevice FFI。
+- iOS/iPadOS: Swift 6 + SwiftUI + CoreBluetooth + CoreLocation + MapKit。SwiftPM + [xtool](https://github.com/xtool-org/xtool)（Mac なしビルド）。位置の書き換えは TLocation 由来の idevice FFI。
 - Android: Kotlin + Jetpack Compose + `BluetoothLeAdvertiser` / `BluetoothGattServer` + `LocationManager`。Gradle。
 - Protocol: Python リファレンス実装 + テストベクタ（仕様の正本）。
 - CI: GitHub Actions（macOS / Ubuntu / Windows）。
@@ -27,7 +27,7 @@ iPhone / Android が取得した GPS 位置を BLE GATT で iPad に転送し、
 
 - 近距離・1 対 1・アカウント不要・クラウドなし。座標は端末外に出さない。
 - Mac 不要（xtool + SideStore 等でのサイドロード）。PC を介さず iPad 単体で完結。
-- 位置注入は StikDebug 由来のオンデバイス方式を内蔵し、既定 OFF・明示操作・常時バナー。
+- 位置の書き換えは StikDebug 由来のオンデバイス方式を内蔵し、既定 OFF・明示操作・常時バナー。
 
 ## Operating Context
 
@@ -38,8 +38,8 @@ iPhone / Android が取得した GPS 位置を BLE GATT で iPad に転送し、
 
 ## Capabilities and Constraints
 
-- できること: ロール選択、Sender の位置送信、Receiver の受信・地図表示・軌跡、位置注入 ON/OFF、pairing file インポート、DDI ダウンロード/マウント、LocalDevVPN 案内、ターゲット IP 設定、自動再接続、診断（hex / FFI ログ）。
-- 制約: 実機・シミュレータ・Xcode が開発環境に無い（CI でコンパイル検証のみ）。位置注入は Apple 非公開 API 相当で、TLocation と同一 FFI に固定。壊れた場合は `tlocation://` URL スキームへ委譲するフォールバック。
+- できること: ロール選択、Sender の位置送信、Receiver の受信・地図表示・軌跡、位置の書き換え ON/OFF、pairing file インポート、DDI のダウンロードと準備、LocalDevVPN 案内、接続先の設定、自動再接続、困ったときの確認。
+- 制約: 実機・シミュレータ・Xcode が開発環境に無い（CI でコンパイル検証のみ）。位置の書き換えは Apple 非公開 API 相当で、TLocation と同一 FFI に固定。壊れた場合は `tlocation://` URL スキームへ委譲するフォールバック。
 - v1 は同時 1 台接続。ボンディングなし。近距離の第三者が偽位置を送れるため、自動接続は許可した送信元のみ、注入は既定 OFF、注入中は常時バナー表示。
 - ライセンス: iOS は AGPL-3.0（StikDebug / TLocation 派生）、Android / Protocol は MIT。
 
@@ -54,7 +54,7 @@ iPhone / Android が取得した GPS 位置を BLE GATT で iPad に転送し、
 - 仕様: `https://github.com/haruki0420/p2pgps-protocol/blob/main/spec/protocol-v1.md`（v1 凍結）, `wiki/Architecture.md`
 - 参照実装: TLocation（AGPL-3.0, 上流コミット固定）
 - 既存の xtool プロジェクト（構成・CI 慣例）
-- 実機スクリーンショット・利用ログ: **無し**（設計は推定）
+- 実機スクリーンショット・利用ログ: **無し**
 
 ## Product Principles
 

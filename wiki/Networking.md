@@ -1,6 +1,6 @@
 # ネットワーク構成 — LocalDevVPN の仕組みと代替手段（Tailscale / WireGuard / Surge）
 
-iPad 側の位置注入では、どうしても「VPN」という言葉が出てきます。このページでは、**なぜ VPN が必要なのか**、**LocalDevVPN は何をしているのか**、そして **Tailscale などで同じことを実現する方法**を説明します。
+iPad 側の位置の書き換えでは、どうしても「VPN」という言葉が出てきます。このページでは、**なぜ VPN が必要なのか**、**LocalDevVPN は何をしているのか**、そして **Tailscale などで同じことを実現する方法**を説明します。
 
 > このページの LocalDevVPN / StosVPN の説明は、公開されている実装（`jkcoxson/LocalDevVPN`、`SideStore/StosVPN`）のソースを読んで整理したものです。Tailscale 方式はコミュニティ実装（`shiqi917/sidestore-vpn-tailscale` など）の情報に基づくもので、**本プロジェクトの iPad アプリとの組み合わせは実機未検証**です。
 
@@ -126,7 +126,7 @@ iPad ◀──────────────── Tailscale ◀───�
 
 3. **iPad 側**: Tailscale をインストールして常時接続（Wi-Fi に接続していること）
 4. **本アプリ**: Settings → **接続先** を `NODE_ADDR`（リフレクターノードの Tailscale IP）に変更
-5. 接続テスト: 本アプリの診断画面、または SideStore の Health Check で到達性を確認
+5. 接続テスト: 本アプリの「困ったとき」画面、または SideStore の Health Check で到達性を確認
 
 > この構成のポイント:
 > - Tailscale の CGNAT 範囲（`100.64.0.0/10`）は subnet route として配布できないため、リフレクターノード自身の Tailscale IP を反射アドレスにし、DNAT で TUN に流します。
@@ -156,7 +156,7 @@ iPad ◀──────────────── Tailscale ◀───�
 - **Wi-Fi 接続は必須**です（RSD / lockdownd の仕様）。
 - リフレクターノードの**常時稼働**が必要です。
 - DERP リレー経由になるとレイテンシが増えます（接続確立には影響しにくいですが、体感は変わります）。
-- **本アプリ + Tailscale リフレクターの組み合わせは実機未検証**です。ターゲット IP を変えるだけで動く設計ですが、実機で確認してください。
+- **本アプリ + Tailscale リフレクターの組み合わせは実機未検証**です。接続先を変えるだけで動く設計ですが、実機で確認してください。
 
 ---
 
@@ -179,9 +179,9 @@ iPad ◀──────────────── Tailscale ◀───�
 
 ## 5. 本アプリでの設定
 
-本アプリは **ターゲット IP を設定で変更できます**（既定 `10.7.0.1`）。LocalDevVPN 以外の方式を使う場合は、この値を環境に合わせて変更してください。
+本アプリは **接続先を設定で変更できます**（既定 `10.7.0.1`）。LocalDevVPN 以外の方式を使う場合は、この値を環境に合わせて変更してください。
 
-1. iPad の Settings → **ターゲット IP** を設定
+1. iPad の Settings → **接続先** を設定
    - LocalDevVPN / StosVPN: `10.7.0.1`（既定）
    - Tailscale + リフレクター: リフレクターノードの Tailscale IP（`NODE_ADDR`）
    - WireGuard / LAN 反射: 反射役の IP

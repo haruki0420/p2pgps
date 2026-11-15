@@ -27,7 +27,7 @@ xtool sdk list        # darwin が出れば OK
 # 3. ビルド
 git clone https://github.com/haruki0420/p2pgps-ios.git
 cd p2pgps-ios
-./scripts/fetch-vendor.sh    # libidevice_ffi.a を取得（約 93 MB、SHA-256 検証）
+./scripts/fetch-vendor.sh    # libidevice_ffi.a を取得（約 54.4 MB、SHA-256 検証）
 xtool dev build
 
 # 4. 実機へインストール

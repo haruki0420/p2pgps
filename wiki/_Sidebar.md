@@ -2,10 +2,12 @@
 
 - [Home](Home)
 - [Getting Started](Getting-Started)
+- [Glossary（用語集）](Glossary)
 - [Architecture](Architecture)
 - [Protocol](Protocol)
 - [Design](Design)
 - [Setup iPad](Setup-iPad)
+- [Networking（VPN の仕組み）](Networking)
 - [Build with xtool](Build-with-xtool)
 - [Troubleshooting](Troubleshooting)
 - [FAQ](FAQ)

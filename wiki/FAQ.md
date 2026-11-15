@@ -32,6 +32,10 @@ A. BLE ペリフェラル + 位置情報取得のため、連続使用で 1 時�
 
 A. `p2pgps-ios` の位置注入エンジンは TLocation（StikDebug の GPS 固定機能の最小フォーク）から移植しています。AGPL-3.0 を継承しています。TLocation がインストールされている場合、URL スキーム `tlocation://simulate-location?lat=..&lon=..` に委譲するフォールバックモードも選べます。
 
+## Q. LocalDevVPN 以外の方法はありますか？
+
+A. あります。**Tailscale + リフレクター**（tailnet 上の Linux ノードでパケットを反射）、**StosVPN**、**WireGuard + 反射サーバー**、**Surge / Clash の reflect** などです。仕組み・比較・手順は [Networking（LocalDevVPN の仕組みと代替手段）](Networking) を参照してください。本アプリは Settings の「ターゲット IP」を変更するだけで、これらの方式にも対応できます。
+
 ## Q. なぜ 20 bytes 固定なのですか？
 
 A. BLE 4.0 の既定 ATT MTU 23（ペイロード 20 bytes）でもフラグメンテーション不要にするためです。緯度経度は 10^-7 度（約 1 cm）精度で int32 に収まります。

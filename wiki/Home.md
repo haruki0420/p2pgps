@@ -30,10 +30,12 @@ Mac が無くてもビルドできるよう、iOS アプリは [xtool](https://g
 ## ページ一覧
 
 - [Getting Started](Getting-Started) — 最短で動かすまでの手順
+- [Glossary（用語集）](Glossary) — DDI・pairing file・BLE などの用語解説
 - [Architecture](Architecture) — システム構成・データフロー
 - [Protocol](Protocol) — BLE プロトコル v1 の要約（正本は p2pgps-protocol）
 - [Design](Design) — 視覚世界・トークン・anti-slop チェックリスト
 - [Setup iPad](Setup-iPad) — Developer Mode / LocalDevVPN / pairing file / DDI
+- [Networking（VPN の仕組みと代替手段）](Networking) — LocalDevVPN の原理・Tailscale / WireGuard での実装
 - [Build with xtool](Build-with-xtool) — Mac なしで iOS アプリをビルドする
 - [Troubleshooting](Troubleshooting) — よくあるエラーと対処
 - [FAQ](FAQ)

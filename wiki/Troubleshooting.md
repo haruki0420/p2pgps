@@ -13,6 +13,7 @@
 | 症状 | 対処 |
 | :--- | :--- |
 | トンネルが繋がらない | LocalDevVPN が接続済みか。Wi-Fi に接続しているか。ターゲット IP が `10.7.0.1` か |
+| LocalDevVPN が使えない / 他の VPN と競合する | Tailscale + リフレクターなどの代替手段があります（[Networking](Networking)）。iOS で同時に使える VPN は 1 つだけです |
 | `Developer Disk Image is not mounted` | Settings → DDI を再ダウンロード。Developer Mode が ON か |
 | `pairing file` エラー | pairing file を再インポート。期限切れの場合は再取得 |
 | 注入 ON にしても変わらない | 他に位置シミュレーションを行うアプリ（TLocation / StikDebug）が同時に動いていないか。終了して再試行 |

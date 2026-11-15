@@ -14,13 +14,16 @@ iPad 側で位置情報をシミュレートするには、StikDebug と同じ�
 
 - 設定 → VPN で「接続済み」になっていることを確認。
 - アプリの Settings でターゲット IP が `10.7.0.1` であることを確認（既定値）。
+- **Wi-Fi に接続している必要があります**（RSD / lockdownd は Wi-Fi 関連時のみ開放されます）。
+
+> LocalDevVPN が使えない場合（他の VPN と競合する、Tailscale を常時使いたい等）は、Tailscale + リフレクターなどの代替手段があります。仕組みと手順は [Networking（LocalDevVPN の仕組みと代替手段）](Networking) を参照してください。
 
 ## 3. pairing file
 
 自分の iPad の pairing record が必要です。取得方法は [StikDebug-Guide / pairing_file.md](https://github.com/StikDebug/StikDebug-Guide/blob/main/pairing_file.md) を参照してください。
 
 - 取得したファイルを Files アプリ等で iPad に置き、`p2pgps-ios` の Settings →「pairing file をインポート」で読み込みます。
-- アプリは Documents 配下にコピーして保持します。iCloud には同期しません。
+- アプリは Application Support 配下に **0600**（+ Data Protection / バックアップ除外）で保存します。Documents には残しません。iCloud には同期しません。
 
 ## 4. DDI（Developer Disk Image）
 

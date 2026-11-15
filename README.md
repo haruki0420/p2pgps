@@ -69,6 +69,8 @@ python -m pytest
 
 - [プロトコル仕様 v1](docs/protocol-spec.md)
 - [アーキテクチャ](docs/architecture.md)
+- [用語集（Glossary）](docs/glossary.md) — DDI・pairing file・BLE などの用語解説
+- [ネットワーク構成（LocalDevVPN の仕組みと代替手段）](docs/networking.md) — Tailscale / WireGuard / Surge での実装
 - [プロジェクト計画 / 進行状況](docs/plan.md)
 - [レビューと修正の記録](docs/review-summary.md)
 - [検証とリリース](docs/verification.md)
@@ -77,7 +79,7 @@ python -m pytest
 
 ## Wiki
 
-このリポジトリの `wiki/` はプロジェクト全体の Wiki（Getting Started / Architecture / Protocol / Design / Setup iPad / Build with xtool / Troubleshooting / FAQ / Roadmap / License）です。GitHub の仕様で Wiki の初回ページだけは手動作成が必要です。
+このリポジトリの `wiki/` はプロジェクト全体の Wiki（Getting Started / Glossary / Architecture / Protocol / Design / Setup iPad / Build with xtool / Troubleshooting / FAQ / Roadmap / License）です。GitHub の仕様で Wiki の初回ページだけは手動作成が必要です。
 
 1. https://github.com/haruki0420/p2pgps/wiki を開き「Create the first page」→ そのまま Save。
 2. `./scripts/publish-wiki.sh` を実行すると `wiki/*.md` が Wiki に同期されます。

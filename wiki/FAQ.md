@@ -6,7 +6,9 @@ A. はい。iOS アプリのビルドは xtool で Linux / WSL から行えま�
 
 ## Q. pairing file はどうやって用意しますか？
 
-A. **iloader** を使うのが簡単です。iloader で SideStore をインストールすると pairing file が自動で配置されるので、「Manage Pairing File」で SideStore に **Place** し、**エクスポート**したファイルを iPad の Files に置いて本アプリでインポートします。期限切れ時は iloader で「Delete Stored Pairing」→ Trust →「Manage Pairing File」→ Place → 再エクスポート、で復旧できます。詳細は [Setup iPad](Setup-iPad) を参照してください。
+A. **iloader** を使うのが簡単です。iloader で SideStore をインストールすると pairing file が自動で配置されるので、「Manage Pairing File」で SideStore に **Place** し、**エクスポート**したファイルを iPad の Files に置いて本アプリでインポートします。期限切れ時は iloader で「Delete Stored Pairing」→ Trust →「Manage Pairing File」→ Place → 再エクスポート、で復旧できます。
+
+> **P2P GPS は iloader v2.4.1 の対応アプリ一覧にまだ入っていません**（一覧が固定のため）。上流に追加 PR を提出済みです（[nab138/iloader#1161](https://github.com/nab138/iloader/pull/1161)）。それまでは「エクスポート（非推奨）」→ Files → 本アプリでインポート、を使ってください。マージ後は「配置」だけで完了します（本アプリは Documents に置かれた pairing file を自動で読み込みます）。詳細は [Setup iPad](Setup-iPad) を参照してください。
 
 ## Q. iPad の位置情報を「本物の GPS」に戻すには？
 

@@ -12,5 +12,4 @@
 - [Networking](Networking)
 - [Product](Product)
 - [Verification](Verification)
-- [History](History)
 - [License](License)

@@ -36,10 +36,10 @@ Sources/
 | ロール選択 / ホーム | 「送信する（iPhone）」「受信する（iPad）」を選択。iPad では受信を既定に |
 | Receiver | 接続状態、送信元名、最終受信時刻、MapKit 地図、軌跡、注入 ON/OFF、開始/停止 |
 | Sender | 現在地、精度、送信状態、START/STOP、バックグラウンド維持の説明 |
-| Settings | pairing file のインポート、DDI のダウンロード/再取得、LocalDevVPN 接続確認、ターゲット IP（既定 `10.7.0.1`）、自動接続、ログ |
+| Settings | pairing file のインポート、DDI のダウンロード/再取得、LocalDevVPN 接続確認、接続先（既定 `10.7.0.1`）、自動接続、ログ |
 | Diagnostics | 受信パケットの hex、FFI エラー、注入セッション状態 |
 
-### 2.3 位置注入エンジン（StikDebug 流用）
+### 2.3 位置の書き換え機能（StikDebug 流用）
 
 [TLocation](https://github.com/truongkma/t-location)（StikDebug の GPS 固定機能だけを残した AGPL-3.0 フォーク）から以下を移植する。
 
@@ -89,7 +89,7 @@ FFI は `libidevice_ffi.a`（[idevice](https://github.com/jkcoxson/idevice), MIT
 
 ## 6. 既知の制約
 
-- iPad 側の位置注入は Apple の Developer Disk Image と LocalDevVPN、pairing file を必要とする（StikDebug と同じ前提）。**Mac は不要**だが、iPad で Developer Mode を有効化し、SideStore 等でサイドロードする必要がある。
+- iPad 側の位置の書き換えは Apple の Developer Disk Image と LocalDevVPN、pairing file を必要とする（StikDebug と同じ前提）。**Mac は不要**だが、iPad で Developer Mode を有効化し、SideStore 等でサイドロードする必要がある。
 - iOS 17.0 以降を対象（idevice の RSD トンネル方式）。
 - BLE は近距離・1 対 1。同時多接続は v2 以降。
 - 実機での動作検証はこの開発環境では実施できない。ビルド・ユニットテスト・仕様整合までを保証し、実機手順を Wiki に記載する。

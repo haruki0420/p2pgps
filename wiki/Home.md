@@ -33,9 +33,9 @@
 - [デザイン](Design)
 - [ライセンス](License)
 - [確認したこと](Verification)
-- [これまでの経緯](History)
+- [検証状況](Verification)
 
 ## 状態
 
 - 2026-11-15: 通信仕様 v1 を確定。
-- BLE 購読・位置注入・シミュレート位置の移動は Android 実機 + iPad で確認済みです。全画面 UI・Dynamic Type・Dark Mode は未確認です。
+- Bluetooth での位置の受け渡しと、iPad の位置の書き換えは Android 実機 + iPad で確認済みです。全画面 UI・Dynamic Type・Dark Mode は未確認です。

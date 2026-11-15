@@ -12,7 +12,7 @@ A. **iloader** を使うのが簡単です。iloader で SideStore をインス�
 
 ## Q. iPad の位置情報を「本物の GPS」に戻すには？
 
-A. Receiver 画面で「位置情報の注入」を OFF にするか、送信側で STOP。アプリは `location_simulation_clear` を呼び、iPad の位置は実 GPS に戻ります。
+A. Receiver 画面で「位置情報を反映」を OFF にするか、送信側で停止します。iPad の位置は元に戻ります。
 
 ## Q. 位置情報はどこかに送られますか？
 
@@ -28,7 +28,7 @@ A. どちらでも構いません。プロトコルは共通です。iPad 側の
 
 ## Q. 位置の更新間隔は変えられますか？
 
-A. Receiver の Settings、または Control の `SET_INTERVAL` で 100 ms〜60 s に変更できます（既定 1 s）。
+A. 設定画面、または iPad 側から 0.2〜5 秒の範囲で変更できます（既定 1 秒）。
 
 ## Q. 送信側のバッテリー消費は？
 
@@ -36,11 +36,11 @@ A. BLE ペリフェラル + 位置情報取得のため、連続使用で 1 時�
 
 ## Q. StikDebug / TLocation との関係は？
 
-A. `p2pgps-ios` の位置注入エンジンは TLocation（StikDebug の GPS 固定機能の最小フォーク）から移植しています。AGPL-3.0 を継承しています。TLocation がインストールされている場合、URL スキーム `tlocation://simulate-location?lat=..&lon=..` に委譲するフォールバックモードも選べます。
+A. `p2pgps-ios` の位置の書き換え機能は TLocation（StikDebug の GPS 固定機能の最小フォーク）から移植しています。AGPL-3.0 を継承しています。TLocation がインストールされている場合、URL スキーム `tlocation://simulate-location?lat=..&lon=..` に委譲するフォールバックモードも選べます。
 
 ## Q. LocalDevVPN 以外の方法はありますか？
 
-A. あります。**Tailscale + リフレクター**（tailnet 上の Linux ノードでパケットを反射）、**StosVPN**、**WireGuard + 反射サーバー**、**Surge / Clash の reflect** などです。仕組み・比較・手順は [Networking（LocalDevVPN の仕組みと代替手段）](Networking) を参照してください。本アプリは Settings の「ターゲット IP」を変更するだけで、これらの方式にも対応できます。
+A. あります。**Tailscale + リフレクター**（tailnet 上の Linux ノードでパケットを反射）、**StosVPN**、**WireGuard + 反射サーバー**、**Surge / Clash の reflect** などです。仕組み・比較・手順は [Networking（LocalDevVPN の仕組みと代替手段）](Networking) を参照してください。本アプリは Settings の「接続先」を変更するだけで、これらの方式にも対応できます。
 
 ## Q. なぜ 20 bytes 固定なのですか？
 

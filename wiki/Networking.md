@@ -125,7 +125,7 @@ iPad ◀──────────────── Tailscale ◀───�
    ```
 
 3. **iPad 側**: Tailscale をインストールして常時接続（Wi-Fi に接続していること）
-4. **本アプリ**: Settings → **ターゲット IP** を `NODE_ADDR`（リフレクターノードの Tailscale IP）に変更
+4. **本アプリ**: Settings → **接続先** を `NODE_ADDR`（リフレクターノードの Tailscale IP）に変更
 5. 接続テスト: 本アプリの診断画面、または SideStore の Health Check で到達性を確認
 
 > この構成のポイント:

@@ -41,8 +41,8 @@ python -m pytest
 
 ## 既知の制約
 
-- BLE 購読・位置注入・シミュレート位置の移動は Android 実機 + iPad で確認済みです。全画面 UI・Dynamic Type・Dark Mode は未確認です。
+- Bluetooth での位置の受け渡しと、iPad の位置の書き換えは Android 実機 + iPad で確認済みです。全画面 UI・Dynamic Type・Dark Mode は未確認です。
 - iPad 側は Developer Mode・LocalDevVPN・pairing file・DDI が必要です（StikDebug と同じ前提）。
-- 位置注入は Apple の Developer Disk Image の仕組みに依存するため、iOS の更新で壊れる可能性があります。
+- 位置の書き換えは Apple の Developer Disk Image の仕組みに依存するため、iOS の更新で壊れる可能性があります。
 - アプリ再起動後、デバイス側に前回のシミュレーションセッションが残る場合があります（既知の制約）。
 - v1 は認証なし・1 対 1 接続です。近距離の第三者が偽の位置を送れるため、注入は既定 OFF・明示操作・注入中は常時バナー表示としています。

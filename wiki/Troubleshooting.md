@@ -16,7 +16,7 @@
 | 接続できるが位置が来ない | 送信側が現在地を測位できているか確認。屋内では時間がかかることがある。iPad 側で「位置情報を反映」が ON か確認 |
 | すぐ切れる | 送信側アプリを画面の前に出す。Android は通知が出ているか確認。iPhone は位置情報を「常に許可」にする |
 | 位置が変わらない | iPad で「位置情報を反映」を ON にする。他の位置変更アプリ（TLocation / StikDebug）が動いていないか確認 |
-| DDI がマウントできない | 設定で DDI をダウンロードし直す。Developer Mode と LocalDevVPN を確認 |
+| DDI を準備できない | 設定で DDI をダウンロードし直す。Developer Mode と LocalDevVPN を確認 |
 | pairing file が通らない | 設定で pairing file を読み込み直す。iOS 27 では下の「iOS 27 の pairing file」を見る |
 | ポートが使用中と言われる | 他の VPN / デバッグアプリを終了。LocalDevVPN を再接続。iPad を再起動 |
 
@@ -29,7 +29,7 @@ iOS 27 では、iloader が作る pairing file が iPad に拒否されること
 
 ## 詳しい情報（開発者向け）
 
-- 接続の確認は、アプリの「困ったとき」画面で「つながらないときの確認」を押す。
+- 接続の確認は、アプリの「困ったとき」画面で「確認を実行」を押す。
 - 技術的なエラー（`ConnectionReset`、`FFI`、`RSD`、`DDI` など）は、同じ画面の「動作記録」に残る。
 - ビルドで `libidevice_ffi.a` が無い場合は `./scripts/fetch-vendor.sh` を実行する（Windows は `scripts/fetch-vendor.ps1`）。
 

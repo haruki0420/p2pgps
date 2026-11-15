@@ -16,9 +16,9 @@
 2. iPad で開発元を信頼する（設定 → 一般 → VPN とデバイス管理）。
 3. **Developer Mode** を ON にして再起動する（設定 → プライバシーとセキュリティ → デベロッパモード）。
 4. **LocalDevVPN** を入れて接続する。
-5. **pairing file** を用意する。iOS 27 では iloader の pairing file でうまくいかないことがある。その場合は [idevice_pair の Windows x86_64 版](https://github.com/jkcoxson/idevice_pair/releases) で作り直す。
+5. **pairing file** を用意する。iOS 27 では iloader の pairing file でうまくいかないことがある。その場合は [idevice_pair の Windows x86_64 版](https://github.com/jkcoxson/idevice_pair/releases)（pairing file を作り直すツール）で作り直す。
 6. **p2pgps-ios** の IPA を SideStore で入れる（[Releases](https://github.com/haruki0420/p2pgps-ios/releases)）。
-7. アプリで「受信する」を選ぶ → pairing file を読み込む → DDI をダウンロードしてマウントする。
+7. アプリで「受信する」を選ぶ → pairing file を読み込む → DDI をダウンロードして使える状態にする。
 
 詳しい手順は [Setup iPad](Setup-iPad) を見てください。
 
@@ -30,7 +30,7 @@
 
 ### Android
 
-`p2pgps-android` の APK を入れる。位置情報・Bluetooth・通知を許可する。
+`p2pgps-android` の APK を入れる（[Releases](https://github.com/haruki0420/p2pgps-android/releases)）。位置情報・Bluetooth・通知を許可する。
 
 ## 3. つないで位置を反映する
 

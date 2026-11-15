@@ -13,15 +13,16 @@ iPad に受信アプリを入れて、位置を書き換えられるようにす
 
 ## 2. SideStore を入れる
 
-1. パソコンで [iloader](https://iloader.app) を開きます。
+1. パソコンで [iloader](https://iloader.app) を開きます。Apple ID でサインインしてください（Windows では iTunes が必要です）。
 2. iPad を USB でつなぎ、SideStore をインストールします。
 3. iPad の 設定 > 一般 > VPN とデバイス管理 で開発元を信頼します。
 4. iPad の 設定 > プライバシーとセキュリティ > デベロッパモード を ON にします。
 
 ## 3. 受信アプリを入れる
 
-1. iPad の SideStore に [P2P GPS のソース](https://raw.githubusercontent.com/haruki0420/p2pgps-ios/main/source/apps.json) を追加します。
-2. P2P GPS をインストールします。
+1. iPad の SideStore にサインインします。
+2. [P2P GPS のソース](https://raw.githubusercontent.com/haruki0420/p2pgps-ios/main/source/apps.json) を追加します。
+3. P2P GPS をインストールします。
 
 ## 4. pairing file を入れる
 
@@ -29,7 +30,9 @@ iPad に受信アプリを入れて、位置を書き換えられるようにす
 2. 「エクスポート」で pairing file を保存します。
 3. iPad の Files に移し、P2P GPS の設定画面で読み込みます。
 
-> iOS 27 でうまくいかない場合は、[idevice_pair](https://github.com/jkcoxson/idevice_pair/releases) の Windows x86_64 版で pairing file を作り直してください。
+> iloader v2.4.1 では、P2P GPS が「Place」の一覧に出ないことがあります。その場合は「エクスポート（非推奨）」を使ってください。
+>
+> iOS 27 でうまくいかない場合は、[idevice_pair](https://github.com/jkcoxson/idevice_pair/releases)（pairing file を作り直すツール）の Windows x86_64 版を使ってください。
 
 ## 5. LocalDevVPN を入れる
 

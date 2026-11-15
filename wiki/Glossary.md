@@ -40,7 +40,7 @@
 | **Central（セントラル）** | BLE 接続を開始する側 | iPad（Receiver） |
 | **Peripheral（ペリフェラル）** | アドバタイズして接続を待つ側 | iPhone / Android（Sender） |
 | **アドバタイズ** | ペリフェラルが「自分はここにいる」と周囲に知らせること | `P2PGPS-<PLATFORM>-<XXXX>` という名前で発信します |
-| **RSSI** | 電波の強さ（受信信号強度） | iPad のステータスレールの「電波」表示に使います |
+| **RSSI** | 電波の強さ（受信信号強度） | iPad のステータスレールの「iPad 接続」表示に使います |
 | **CoreBluetooth** | iOS の BLE フレームワーク | `CBCentralManager`（受信側）/ `CBPeripheralManager`（送信側） |
 | **Location Packet** | 位置情報を格納した 20 bytes のパケット | 緯度・経度・標高・精度・速度・時刻・フラグ |
 | **Extended Location** | 補助情報の 8 bytes パケット（任意） | 進行方向・バッテリー・衛星数など |
@@ -49,7 +49,7 @@
 | **リトルエンディアン** | 複数バイトの数値を下位バイトから並べる方式 | パケット内のすべての数値で採用 |
 | **10^7 スケール** | 度 × 10,000,000 の整数表現 | 緯度 35.6812360° → `356812360`。小数を使わず正確に送るため |
 | **sequence（シーケンス）** | パケットの通し番号 | 欠落・重複・順序の入れ替わりを検出します |
-| **flags** | 状態を表すビット列 | 有効な fix か、標高・速度が有効か、シミュレート位置か、充電中か等 |
+| **flags** | 状態を表すビット列 | 有効な fix か、標高・速度が有効か、テスト用の位置か、充電中か等 |
 
 ---
 
@@ -74,14 +74,14 @@
 | **NetworkExtension / Packet Tunnel Provider** | iOS で VPN を実装するためのフレームワーク | LocalDevVPN / StosVPN / Tailscale が使用。entitlement が必要 |
 | **RSD（Remote Service Discovery）** | iOS 17 以降のデバイス内部サービスを発見・接続する仕組み | `10.7.0.1` の Remote Pairing サービスに接続し、位置シミュレーションサービスを呼び出します（ポートは Bonjour で自動検出、フォールバック 49152） |
 | **Remote Pairing サービス** | RSD への接続を受け付けるデバイス側のサービス。Bonjour（`_remotepairing._tcp`）で広告されます | 固定ポートとは限らないため、アプリが Bonjour で検出します。検出にはローカルネットワークの許可が必要です |
-| **DDI（Developer Disk Image）** | Apple が提供する開発用のディスクイメージ | マウントすると位置シミュレーション等の開発用サービスが使えます。アプリがダウンロードしてマウントします |
+| **DDI（Developer Disk Image）** | Apple が提供する開発用のディスクイメージ | 使える状態にすると、位置の書き換えなどの開発用サービスが使えます。アプリがダウンロードして準備します |
 | **trustcache** | 「このバイナリは信頼できる」というリスト | DDI の一部。`Image.dmg.trustcache` としてダウンロードします |
 | **BuildManifest** | DDI のビルド情報ファイル | `BuildManifest.plist` としてダウンロードします |
-| **マウント** | ディスクイメージを OS に認識させること | DDI をマウントしてから位置シミュレーションを開始します |
+| **マウント** | ディスクイメージを OS に認識させること | DDI を使える状態にしてから位置の書き換えを開始します |
 | **`com.apple.dt.simulatelocation`** | Apple の位置シミュレーションサービス名 | 受信した座標をここに設定します |
 | **StikDebug** | iOS 向けのオンデバイス・デバッガ / JIT 有効化アプリ | 位置シミュレーションの原実装。本プロジェクトの iPad 側エンジンの由来です |
 | **TLocation** | StikDebug から GPS 固定機能だけを残した最小フォーク | 本プロジェクトが移植した実装（AGPL-3.0） |
-| **idevice** | Apple デバイスのサービスと通信する Rust ライブラリ | `libidevice_ffi.a` として静的リンク。DDI マウントや位置シミュレーションに使用 |
+| **idevice** | Apple デバイスのサービスと通信する Rust ライブラリ | `libidevice_ffi.a` として静的リンク。DDI の準備や位置の書き換えに使用 |
 | **FFI** | Foreign Function Interface。他言語の関数を呼ぶ仕組み | Swift から idevice の C 関数を呼びます |
 | **RPPairing / `tunnel_create_rppairing`** | pairing file を使って RSD トンネルを張る処理 | 位置シミュレーションの接続確立に使います |
 | **UDID** | 端末ごとの一意な ID | pairing file や端末識別に使われます |

@@ -59,8 +59,8 @@ iPhone / Android が取得した GPS 位置を BLE GATT で iPad に転送し、
 ## Evidence on Hand
 
 - 仕様: `docs/protocol-spec.md`（v1 凍結）, `docs/architecture.md`
-- 参照実装: `_research/t-location`（AGPL-3.0, 上流コミット固定）
-- 既存 xtool プロジェクト: `_ref/[private-project]`（構成・CI 慣例）
+- 参照実装: TLocation（AGPL-3.0, 上流コミット固定）
+- 既存の xtool プロジェクト（構成・CI 慣例）
 - 実機スクリーンショット・利用ログ: **無し**（設計は推定）
 
 ## Product Principles

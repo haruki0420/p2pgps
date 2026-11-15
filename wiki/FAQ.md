@@ -52,7 +52,7 @@ A. `p2pgps-ios` は AGPL-3.0（StikDebug/TLocation の派生のため）、`p2pg
 
 ## Q. 更新を自動化できますか？
 
-A. SideStore / AltStore の**ソース**に対応しています。リポジトリを public にするか公開用リポジトリにミラーしたうえで、SideStore の Sources に次を追加すると、新しいリリースが自動で一覧に表示されます。
+A. SideStore / AltStore の**ソース**に対応しています。`p2pgps-ios` リポジトリは public なので、SideStore の Sources に次を追加すると、新しいリリースが自動で一覧に表示されます。
 
 ```
 https://raw.githubusercontent.com/haruki0420/p2pgps-ios/main/source/apps.json

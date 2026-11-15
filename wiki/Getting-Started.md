@@ -18,6 +18,7 @@
 4. SideStore を開いてサインイン →「7 DAYS」をタップして更新。
 5. **iloader で pairing file を注入**（Manage Pairing File → Place）し、**エクスポート**して iPad の Files に置く。
 6. `p2pgps-ios` の未署名 IPA を SideStore でインストール（[ビルド手順](Build-with-xtool) または [Releases](https://github.com/haruki0420/p2pgps-ios/releases)）。
+   - SideStore の Sources に `https://raw.githubusercontent.com/haruki0420/p2pgps-ios/main/source/apps.json` を追加すると、以降は更新が自動で一覧に表示されます。
 7. アプリで「受信する（iPad）」を選択 → pairing file をインポート → DDI をダウンロード → 接続待ちにする。
 
 詳しい手順は [Setup iPad](Setup-iPad) を参照してください。

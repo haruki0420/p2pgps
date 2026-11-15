@@ -61,7 +61,10 @@
 | :--- | :--- | :--- |
 | **Developer Mode（デベロッパモード）** | iOS / iPadOS の開発者向け機能を有効にする設定 | 設定 → プライバシーとセキュリティ → デベロッパモード。位置シミュレーションに必要 |
 | **サイドロード** | App Store を経由せず、IPA を端末にインストールすること | SideStore / AltStore 等を使って `p2pgps-ios` を iPad に入れます |
-| **SideStore / AltStore** | サイドロード用のアプリ管理ツール | 未署名 IPA にご自身の Apple ID で署名してインストールします |
+| **iloader** | SideStore のインストールと pairing file の注入を行うデスクトップツール（Windows / macOS / Linux） | 初回セットアップで使用。Apple ID でサインインし、SideStore の導入と pairing file の配置・エクスポートを行います |
+| **SideStore / AltStore** | サイドロード用のアプリ管理ツール | 未署名 IPA にご自身の Apple ID で署名してインストールします。無料 Apple ID では 7 日で期限切れになるため更新が必要です |
+| **RPPairing** | RSD 接続に使う pairing file の形式（idevice 系） | iloader は SideStore 用に RPPairing と lockdown の pairing file を配置します |
+| **usbmuxd** | USB 経由で iOS デバイスと通信するためのデーモン | iloader がデバイスを認識するために必要（Windows は iTunes、macOS は標準、Linux はパッケージ） |
 | **IPA** | iOS アプリのパッケージファイル（Android の APK に相当） | Releases に未署名 IPA を添付しています |
 | **pairing file** | Apple デバイスとコンピュータ（または自分自身）をペアリングした記録ファイル | iPad 自身の RSD 接続に必要。アプリにインポートして使います。秘密情報なので扱いに注意 |
 | **LocalDevVPN** | 端末自身を `10.7.0.1` としてループバックさせる VPN アプリ（NetworkExtension のパケット反射） | これがないと iPad が自分自身の RSD（ポート 49152）に接続できません。仕組みは [Networking](https://github.com/haruki0420/p2pgps/wiki/Networking) を参照 |

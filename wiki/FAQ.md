@@ -2,7 +2,11 @@
 
 ## Q. Mac が無くても使えますか？
 
-A. はい。iOS アプリのビルドは xtool で Linux / WSL から行えます。ただし iPad 側の位置シミュレーションには Developer Mode・LocalDevVPN・pairing file・DDI が必要です（StikDebug と同じ前提）。
+A. はい。iOS アプリのビルドは xtool で Linux / WSL から行えます。ただし iPad 側の初回セットアップには **Windows / macOS / Linux のコンピュータ + [iloader](https://iloader.app)** が必要です（SideStore のインストールと pairing file の注入）。位置シミュレーションには Developer Mode・LocalDevVPN・pairing file・DDI も必要です（StikDebug と同じ前提）。
+
+## Q. pairing file はどうやって用意しますか？
+
+A. **iloader** を使うのが簡単です。iloader で SideStore をインストールすると pairing file が自動で配置されるので、「Manage Pairing File」で SideStore に **Place** し、**エクスポート**したファイルを iPad の Files に置いて本アプリでインポートします。期限切れ時は iloader で「Delete Stored Pairing」→ Trust →「Manage Pairing File」→ Place → 再エクスポート、で復旧できます。詳細は [Setup iPad](Setup-iPad) を参照してください。
 
 ## Q. iPad の位置情報を「本物の GPS」に戻すには？
 

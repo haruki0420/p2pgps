@@ -34,11 +34,14 @@ Mac を持っていなくてもビルドできるよう、iOS アプリは [xtoo
 
 ### 1. iPad（Receiver）
 
-1. iPad で **Developer Mode** を有効化（設定 → プライバシーとセキュリティ → デベロッパモード）。
-2. [LocalDevVPN](https://apps.apple.com/us/app/localdevvpn/id6755608044)（無料）をインストールして接続。
-3. 自分の iPad 用の **pairing file** を用意（[StikDebug-Guide](https://github.com/StikDebug/StikDebug-Guide/blob/main/pairing_file.md) 参照）。
-4. `p2pgps-ios` を SideStore / AltStore でインストールし、pairing file をインポート。
-5. アプリで「受信する（iPad）」を選び、DDI をダウンロード → 送信側を選択 → 注入 ON。
+1. コンピュータ（Windows / macOS / Linux）で **[iloader](https://iloader.app)** を使い、iPad に **SideStore** をインストール（iPad を USB 接続 → Apple ID でサインイン →「Install SideStore (Stable)」）。
+2. iPad で開発元を信頼（設定 → 一般 → VPN とデバイス管理）→ **Developer Mode** を有効化 → 再起動。
+3. [LocalDevVPN](https://apps.apple.com/us/app/localdevvpn/id6755608044)（無料）をインストールして接続。
+4. **iloader で pairing file を注入**（Manage Pairing File → Place）し、**エクスポート**して iPad の Files に置く。
+5. `p2pgps-ios` の未署名 IPA を SideStore でインストールし、アプリで pairing file をインポート。
+6. アプリで「受信する（iPad）」を選び、DDI をダウンロード → 送信側を選択 → 注入 ON。
+
+詳しくは [Setup iPad](https://github.com/haruki0420/p2pgps/wiki/Setup-iPad) を参照してください。
 
 ### 2. iPhone（Sender）
 

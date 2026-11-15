@@ -9,6 +9,12 @@
 | [p2pgps-android](https://github.com/haruki0420/p2pgps-android) | [v1.0.1](https://github.com/haruki0420/p2pgps-android/releases/tag/v1.0.1) | レビュー指摘 C-3〜C-11 / R 群修正 |
 | [p2pgps-protocol](https://github.com/haruki0420/p2pgps-protocol) | [v1.0.1](https://github.com/haruki0420/p2pgps-protocol/releases/tag/v1.0.1) | 仕様 v1.0.1（§5.1 / RESET 明確化） |
 
+## リリース成果物
+
+- **p2pgps-ios**: 各リリースに未署名 IPA（`p2pgps-ios-<tag>-unsigned.ipa`）と SHA-256 を添付。SideStore / AltStore 等で署名してインストールしてください。
+- **p2pgps-android**: 各リリースにデバッグ署名済み APK（`p2pgps-android-<tag>-debug.apk`）、未署名リリース APK（`...-release-unsigned.apk`）、`checksums.sha256` を添付。
+- **p2pgps-protocol / p2pgps**: 実行バイナリは無し（GitHub のソースアーカイブを利用）。
+
 ## CI（GitHub Actions）
 
 - **p2pgps-ios**: `macos-15` で `swift test`（76 tests）→ `scripts/fetch-vendor.sh`（SHA-256 検証）→ `swift build --triple arm64-apple-ios17.0 --sdk …`（iOS クロスビルド）→ XcodeGen + `xcodebuild`（リンクまで）。

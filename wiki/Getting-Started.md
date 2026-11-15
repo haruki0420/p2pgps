@@ -4,9 +4,9 @@
 
 | 役割 | 端末 | 必要なもの |
 | :--- | :--- | :--- |
-| 受信（位置を書き換える側） | iPad（iPadOS 17.0 以降） | Developer Mode、LocalDevVPN、pairing file、DDI、`p2pgps-ios` |
-| 送信 | iPhone（iOS 17.0 以降） | `p2pgps-ios` |
-| 送信 | Android（8.0 以降） | `p2pgps-android` の APK |
+| 受信する（iPad） | iPad（iPadOS 17.0 以降） | Developer Mode、LocalDevVPN、pairing file、DDI、`p2pgps-ios` |
+| 送信する（iPhone） | iPhone（iOS 17.0 以降） | `p2pgps-ios` |
+| 送信する（Android） | Android（8.0 以降） | `p2pgps-android` の APK |
 
 ## 1. iPad を準備する
 

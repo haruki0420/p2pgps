@@ -2,7 +2,7 @@
 
 ## Q. Mac が無くても使えますか？
 
-A. はい。iOS アプリのビルドは xtool で Linux / WSL から行えます。ただし iPad 側の初回セットアップには **Windows / macOS / Linux のコンピュータ + [iloader](https://iloader.app)** が必要です（SideStore のインストールと pairing file の注入）。位置シミュレーションには Developer Mode・LocalDevVPN・pairing file・DDI も必要です（StikDebug と同じ前提）。
+A. はい。iOS アプリのビルドは xtool で Linux / WSL から行えます。ただし iPad 側の初回セットアップには **Windows / macOS / Linux のコンピュータ + [iloader](https://iloader.app)** が必要です（SideStore のインストールと pairing file の配置）。位置の書き換えには Developer Mode・LocalDevVPN・pairing file・DDI も必要です（StikDebug と同じ前提）。
 
 ## Q. pairing file はどうやって用意しますか？
 

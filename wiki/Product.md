@@ -49,7 +49,7 @@ iPhone / Android が取得した GPS 位置を BLE GATT で iPad に転送し、
 
 - 名称: **P2P GPS**（`p2pgps`）。日本語 UI。
 - ネイティブ作法を守る（HIG / Material 3）。web 風 UI はしない。
-- 派手さより「状態が一目で分かること」。ただし、システム既定のままの無個性な画面にはしない（下記 DESIGN.md の視覚世界に従う）。
+- 派手さより「状態が一目で分かること」。ただし、システム既定のままの無個性な画面にはしない（[Design](Design) の視覚世界に従う）。
 
 ## Evidence on Hand
 

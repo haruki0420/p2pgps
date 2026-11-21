@@ -1,16 +1,34 @@
 **P2P GPS**
 
 - [Home](Home)
+- [Status](Status)
+- [Compatibility](Compatibility)
+- [Security & Privacy](Security-and-Privacy)
+
+**はじめて使う**
+
 - [Getting Started](Getting-Started)
 - [Setup iPad](Setup-iPad)
-- [Troubleshooting](Troubleshooting)
 - [FAQ](FAQ)
-- [Glossary](Glossary)
+- [Troubleshooting](Troubleshooting)
+
+**開発する**
+
 - [Architecture](Architecture)
-- [Design](Design)
 - [Build with xtool](Build-with-xtool)
-- [Protocol](Protocol)
-- [Networking](Networking)
 - [Product](Product)
-- [Verification](Verification)
+- [Design](Design)
+- [Networking](Networking)
 - [License](License)
+
+**仕様・QA**
+
+- [Protocol](Protocol)
+- [Verification](Verification)
+- [Glossary](Glossary)
+
+**関連リポジトリ**
+
+- [p2pgps-ios](https://github.com/haruki0420/p2pgps-ios/wiki)
+- [p2pgps-android](https://github.com/haruki0420/p2pgps-android/wiki)
+- [p2pgps-protocol](https://github.com/haruki0420/p2pgps-protocol/wiki)

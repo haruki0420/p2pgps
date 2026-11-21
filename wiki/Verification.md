@@ -43,7 +43,7 @@ python -m pytest
 
 ## 既知の制約
 
-- Bluetooth での位置の受け渡しと、iPad の位置の書き換えは Android 実機 + iPad で確認済みです。全画面 UI・Dynamic Type・Dark Mode は未確認です。
+- 実機での確認範囲（BLE 接続・位置の書き換え・全画面 UI）は [Status](Status) にまとめています。
 - iPad 側は Developer Mode・LocalDevVPN・pairing file・DDI が必要です（StikDebug と同じ前提）。
 - 位置の書き換えは Apple の Developer Disk Image の仕組みに依存するため、iOS の更新で壊れる可能性があります。
 - アプリ再起動後、デバイス側に前回のシミュレーションセッションが残る場合があります（既知の制約）。

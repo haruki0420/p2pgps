@@ -32,7 +32,7 @@ P2P GPS は複数の上流プロジェクトの上に成り立っています。
 | iOS アプリアイコン（`p2pgps-ios/Resources/AppIcon*.png`） | 本プロジェクトのオリジナル（測量標モチーフ）。第三者素材は不使用 |
 | Android ランチャーアイコン（`ic_launcher_foreground.xml`） | Material Icons の位置ピン（Apache-2.0）を元にした派生。`p2pgps-android/NOTICE` に帰属を記載 |
 | Android 通知アイコン（`ic_stat_location.xml`） | Material Icons の "place"（Apache-2.0）の派生。`p2pgps-android/NOTICE` に帰属を記載 |
-| README のバッジ | shields.io が生成する画像（外部サービス）。リポジトリには画像ファイルを含めない |
+| README のバッジ | 現在は使用していない。追加する場合は外部サービス（shields.io 等）を参照し、画像ファイルは含めない |
 | StikDebug / TLocation / iloader のスクリーンショット | 本プロジェクトには含めていない |
 
 ## `p2pgps-ios` の NOTICE（要旨）
